@@ -1,0 +1,185 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff;
+  }
+
+  .sidebar,
+  .preview-toolbar {
+    display: none !important;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .preview-area {
+    padding: 0;
+  }
+
+  .document {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .completion-note {
+    display: none;
+  }
+
+  .party-card,
+  .summary-table,
+  .signature-table,
+  .contract-section {
+    break-inside: avoid;
+  }
+
+  .contract-section h2 {
+    break-after: avoid;
+  }
+}
+
+@page quotationLandscape {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+@media print {
+  .quotation-appendix,
+  .quotation-sheet {
+    page: quotationLandscape;
+  }
+
+  .quotation-appendix {
+    margin-top: 0;
+    break-before: page;
+  }
+
+  .appendix-heading {
+    break-after: avoid;
+  }
+
+  .quotation-sheet {
+    margin-top: 0;
+    break-before: page;
+  }
+
+  .quotation-sheet:first-of-type {
+    break-before: auto;
+  }
+
+  .quotation-header__logo-row {
+    min-height: 50px;
+  }
+
+  .quotation-table {
+    font-size: 7.4px;
+  }
+
+  .quotation-table thead {
+    display: table-header-group;
+  }
+
+  .quotation-table tfoot {
+    display: table-footer-group;
+  }
+
+  .quotation-table tr,
+  .quotation-statement,
+  .quotation-formula-note {
+    break-inside: avoid;
+  }
+
+  .document-footer {
+    display: none;
+  }
+}
+
+/* v1.7 print continuity and appendix pagination */
+@media print {
+  .contract-section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .contract-section h2,
+  .payment-stage h3,
+  .warranty-item h3 {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+
+  .bilingual-paragraph,
+  .contract-section li,
+  .payment-stage,
+  .warranty-item,
+  .party-grid,
+  .project-address,
+  .attachments-block,
+  .summary-table tr,
+  .signature-table {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .quotation-appendix {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .quotation-sheet--stone {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .no-print,
+  .quotation-edit-controls,
+  .quotation-add-row,
+  .quotation-remove-row {
+    display: none !important;
+  }
+
+  .print-only {
+    display: inline !important;
+  }
+
+  .quotation-table-scroll {
+    overflow: visible;
+  }
+
+  .quotation-input,
+  .quotation-statement__input {
+    min-height: 0;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent !important;
+    color: #000;
+    resize: none;
+    overflow: visible;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .quotation-input--zh {
+    color: #536069;
+  }
+
+  .quotation-table tbody tr {
+    height: auto;
+    min-height: 34px;
+  }
+
+  .quotation-table tr,
+  .quotation-statement {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+}
