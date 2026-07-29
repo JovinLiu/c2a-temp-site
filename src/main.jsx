@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './styles/global.css';
 import './styles/editor.css';
+import './styles/landing.css';
 import './styles/print.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
