@@ -13,6 +13,7 @@ import { defaultAgreement as defaultInstallationAgreement } from './editors/inst
 import { safeFileName as safeInstallationFileName } from './editors/installation/utils/formatters.js';
 import { calculateInstallationQuotation } from './editors/installation/utils/installationQuotationCalculations.js';
 import { clearSavedAgreement, loadAgreement, mergeAgreement, saveAgreement } from './utils/storage.js';
+import CustomerLandingPage from './components/CustomerLandingPage.jsx';
 
 const SUPPLY_STORAGE_KEY = 'c2a-supply-installation-agreement-v1.9';
 const PRELIMINARY_STORAGE_KEY = 'c2a-preliminary-design-agreement-v1.2';
@@ -144,6 +145,7 @@ function savedTime() {
 }
 
 export default function App() {
+  const [hasEnteredApp, setHasEnteredApp] = useState(false);
   const [activeEditor, setActiveEditor] = useState(() => {
     const saved = window.localStorage.getItem(ACTIVE_EDITOR_KEY);
     return VALID_EDITORS.has(saved) ? saved : 'supply';
@@ -287,14 +289,6 @@ export default function App() {
     active.setData(clone(active.defaultData));
   }
 
-  async function logout() {
-    try {
-      await fetch('/api/logout', { method: 'POST' });
-    } finally {
-      window.location.assign('/login.html');
-    }
-  }
-
   const sidebarProps = {
     data: active.data,
     update: active.update,
@@ -304,8 +298,11 @@ export default function App() {
     onReset: resetTemplate,
     activeEditor,
     onEditorChange: setActiveEditor,
-    onLogout: logout,
   };
+
+  if (!hasEnteredApp) {
+    return <CustomerLandingPage onEnterApp={() => setHasEnteredApp(true)} />;
+  }
 
   return (
     <div className="app-shell">

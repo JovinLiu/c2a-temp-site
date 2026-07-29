@@ -36,16 +36,13 @@ export default function Sidebar({
   onReset,
   activeEditor,
   onEditorChange,
-  onLogout,
 }) {
   const installationCalculation = calculateInstallationQuotation(data.installationQuotation);
   const contractSumIsSynced = installationCalculation.hasCalculatedFee;
 
   return (
     <aside className="sidebar">
-      <button className="button sidebar-logout" type="button" onClick={onLogout}>
-        Log out / 退出登录
-      </button>
+      {/* Login removed — app is now open access */}
 
       <div className="editor-switcher">
         <label htmlFor="agreement-editor-select">Agreement editor / 协议编辑器</label>

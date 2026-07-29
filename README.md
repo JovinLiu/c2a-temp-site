@@ -23,33 +23,9 @@ npm run dev
 
 This opens the React editor without the Vercel password middleware, which is useful while editing the source code.
 
-## Test the password gate locally
+## Deployment
 
-1. Copy `.env.example` to `.env.local`.
-2. Set `APP_PASSWORD` and `SESSION_SECRET`.
-3. Run:
-
-```bash
-npm install
-npm run dev:vercel
-```
-
-## Deploy to Vercel Hobby
-
-Push the project to a private GitHub repository and import it into Vercel. In Vercel Project Settings -> Environment Variables, create:
-
-- `APP_PASSWORD`: the password entered on the blank login page
-- `SESSION_SECRET`: a long random value used to sign the 24-hour HttpOnly session cookie
-
-Apply both variables to Production and Preview, then redeploy.
-
-Generate a session secret on macOS, Linux or Git Bash:
-
-```bash
-openssl rand -base64 48
-```
-
-The password is checked inside a Vercel Function and is never included in the React bundle. Routing Middleware blocks the editor HTML and its static assets until the signed session cookie is valid.
+Deploy the project to your hosting provider (Vercel, Netlify, etc.) as a standard Vite app. The agreement editors are publicly accessible by default; if you need access control, add your preferred authentication layer separately.
 
 ## Agreement data
 
@@ -63,7 +39,7 @@ Agreement data is saved in the current browser's localStorage. It is not uploade
 
 ## Sidebar order
 
-The sidebar begins with Log out, followed by the agreement selector, the current editor title, and the four document action buttons.
+The sidebar begins with the agreement selector, the current editor title, and the document action buttons.
 
 ## Installation fee calculator
 

@@ -17,16 +17,11 @@ git push -u origin main
 
 Choose **Add New -> Project**, import the private GitHub repository, and deploy with the detected Vite settings.
 
-## 3. Add server-side environment variables
+## 3. Optional: add server-side environment variables for a custom gate
 
-In **Project Settings -> Environment Variables**, add:
+If you want to reintroduce a simple shared-password gate using the original middleware, add server-side environment variables in **Project Settings -> Environment Variables**. This project no longer requires these variables by default.
 
-```text
-APP_PASSWORD = your chosen private password
-SESSION_SECRET = a long random secret
-```
-
-Select Production and Preview for both values. Do not add a `VITE_` prefix.
+Do not add a `VITE_` prefix to server-side secrets.
 
 ## 4. Redeploy
 
@@ -34,4 +29,4 @@ Open the latest deployment and choose Redeploy so the Functions and Routing Midd
 
 ## 5. Use the app
 
-Opening the production URL shows a blank login page with one password field. A correct password creates a secure session for 24 hours. Use **Log out / 退出登录** in the left sidebar to clear the session.
+Open the production URL to access the agreement editors directly. Server-side environment variables are no longer required for access.

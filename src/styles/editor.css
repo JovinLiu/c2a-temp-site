@@ -258,6 +258,134 @@
   padding: 24px;
 }
 
+.landing-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7f9 0%, #e9f2f4 100%);
+  color: var(--ink);
+}
+
+.landing-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  max-width: 1120px;
+  margin: 0 auto 28px;
+}
+
+.landing-page__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.landing-page__brand-mark {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.landing-page__brand h1 {
+  margin: 0 0 3px;
+  font-size: 22px;
+}
+
+.landing-page__brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.landing-page__content {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.landing-page__hero {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+  padding: 32px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 20px 50px rgba(19, 38, 46, 0.08);
+}
+
+.landing-page__eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.landing-page__copy h2 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.landing-page__copy p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.landing-page__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.landing-page__hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.landing-page__card {
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #173b45 0%, #1f5968 100%);
+  color: #fff;
+}
+
+.landing-page__card h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.landing-page__card ul {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.landing-page__cta {
+  min-width: 180px;
+}
+
+@media (max-width: 860px) {
+  .landing-page__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-page__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .preview-toolbar {
   width: min(920px, 100%);
   margin: 0 auto 16px;
@@ -1354,17 +1482,7 @@
 }
 
 /* v3.1 sidebar control order */
-.sidebar-logout {
-  width: 100%;
-  margin: 0 0 12px;
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.075);
-  font-weight: 750;
-}
-
-.sidebar-logout:hover {
-  background: rgba(255, 255, 255, 0.14);
-}
+/* sidebar logout removed */
 
 .brand--after-switcher {
   margin-top: 14px;

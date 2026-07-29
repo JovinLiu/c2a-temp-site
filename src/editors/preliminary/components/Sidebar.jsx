@@ -22,12 +22,10 @@ const clauseLabels = {
   governingLaw: ['Governing law', '适用法律'],
 };
 
-export default function Sidebar({ data, update, onPrint, onExport, onImport, onReset, activeEditor, onEditorChange, onLogout }) {
+export default function Sidebar({ data, update, onPrint, onExport, onImport, onReset, activeEditor, onEditorChange }) {
   return (
     <aside className="sidebar">
-      <button className="button sidebar-logout" type="button" onClick={onLogout}>
-        Log out / 退出登录
-      </button>
+      {/* Login removed — app is now open access */}
 
       <div className="editor-switcher">
         <label htmlFor="agreement-editor-select">Agreement editor / 协议编辑器</label>
