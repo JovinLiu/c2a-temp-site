@@ -1,0 +1,1 @@
+export default function Media({item,controls=true}){return item.type.startsWith('video/')?<video src={'/media/'+item.name} controls={controls} playsInline preload="metadata" aria-label={item.alt}/>:<img src={'/media/'+item.name} alt={item.alt} loading="lazy"/>}

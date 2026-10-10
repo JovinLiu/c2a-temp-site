@@ -1,0 +1,3 @@
+'use client';
+import {useRef,useState,useEffect} from 'react';
+export default function HeroVideo(){const ref=useRef(null);const [playing,setPlaying]=useState(true);useEffect(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches){ref.current?.pause();setPlaying(false)}},[]);return <><video ref={ref} className="hero-video" autoPlay muted loop playsInline aria-hidden="true" onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}><source src="/video.webm" type="video/webm"/></video><button className="video-toggle" onClick={()=>{if(playing){ref.current.pause()}else{ref.current.play().catch(()=>setPlaying(false))}}} aria-label={playing?'Pause background video':'Play background video'}>{playing?'Ⅱ Pause film':'▷ Play film'}</button></>}

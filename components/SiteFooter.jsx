@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function SiteFooter(){return <footer className="site-footer"><div><Link href="/" className="wordmark">C2A<span>CABINETRY</span></Link><p>From China to Australia.<br/>Made for the way you live.</p></div><div><small>LET’S MAKE IT YOURS</small><a href="mailto:liujovin@gmail.com">liujovin@gmail.com ↗</a><a href="tel:0413685018">0413 685 018</a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} C2A Cabinetry</span><span>Thoughtful design. Beautiful everyday living.</span></div></footer>}
