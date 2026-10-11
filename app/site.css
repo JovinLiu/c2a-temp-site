@@ -165,3 +165,17 @@
 .site-header-glass { padding-left: var(--page-gutter); padding-right: var(--page-gutter); }
 .hero-copy { left: var(--page-gutter); right: var(--page-gutter); }
 .video-toggle { right: var(--page-gutter); }
+
+.footer-services { display: flex; flex-wrap: wrap; gap: 14px 28px; width: 100%; }
+.site-footer .footer-services a { font-size: 13px; }
+.seo-tinted { background: #eae9e1; }
+.seo-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 36px 60px; margin: 45px 0 25px; }
+.seo-grid article { border-top: 1px solid #cccfc0; padding-top: 24px; }
+.seo-grid h3 { font-size: 24px; margin: 0 0 16px; }
+.seo-grid p,.seo-questions p { color: #626659; line-height: 1.9; }
+.seo-questions { margin-top: 40px; }
+.seo-questions details { border-bottom: 1px solid #cccfc0; padding: 22px 0; }
+.seo-questions summary { font-size: 18px; cursor: pointer; }
+.seo-questions summary:focus-visible { outline: 2px solid #66674f; outline-offset: 5px; }
+.seo-questions p { margin: 18px 0 0; max-width: 800px; }
+@media(max-width:700px) { .seo-grid { grid-template-columns: 1fr; gap: 25px; } }
