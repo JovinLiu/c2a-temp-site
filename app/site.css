@@ -154,3 +154,14 @@
 @media (max-width:700px) {
   .hero-actions > a { flex: none; max-width: 100%; }
 }
+
+.hero-actions > .text-link { white-space: nowrap; flex-wrap: nowrap; gap: 12px; }
+
+/* One responsive gutter for the header, hero and video control. */
+.website { --page-gutter: 8%; position: relative; }
+@media (min-width:1600px) { .website { --page-gutter: 12%; } }
+@media (max-width:1000px) { .website { --page-gutter: 6%; } }
+@media (max-width:700px) { .website { --page-gutter: 7%; } }
+.site-header-glass { padding-left: var(--page-gutter); padding-right: var(--page-gutter); }
+.hero-copy { left: var(--page-gutter); right: var(--page-gutter); }
+.video-toggle { right: var(--page-gutter); }
