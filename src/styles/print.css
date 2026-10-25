@@ -183,3 +183,10 @@
     page-break-inside: avoid;
   }
 }
+
+@media print {
+  .quotation-print-value {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}

@@ -36,27 +36,33 @@ function BilingualHeader({ en, zh }) {
 
 function EditableTextCell({ value, onChange, ariaLabel }) {
   return (
-    <textarea
-      className="quotation-input quotation-input--text"
-      rows="2"
-      value={value ?? ''}
-      aria-label={ariaLabel}
-      onChange={(event) => onChange(event.target.value)}
-    />
+    <>
+      <textarea
+        className="quotation-input quotation-input--text no-print"
+        rows="2"
+        value={value ?? ''}
+        aria-label={ariaLabel}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      <span className="print-only quotation-print-value">{value ?? ''}</span>
+    </>
   );
 }
 
 function EditableNumber({ value, onChange, ariaLabel }) {
   return (
-    <input
-      className="quotation-input quotation-input--number"
-      type="number"
-      min="0"
-      step="1"
-      value={value ?? ''}
-      aria-label={ariaLabel}
-      onChange={(event) => onChange(event.target.value)}
-    />
+    <>
+      <input
+        className="quotation-input quotation-input--number no-print"
+        type="number"
+        min="0"
+        step="1"
+        value={value ?? ''}
+        aria-label={ariaLabel}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      <span className="print-only quotation-print-value">{value ?? ''}</span>
+    </>
   );
 }
 
@@ -337,12 +343,13 @@ export default function QuotationAppendix({ data, update }) {
 
         <div className="quotation-statement quotation-statement--editable">
           <textarea
-            className="quotation-statement__input"
+            className="quotation-statement__input no-print"
             rows="2"
             value={data.appendix.joinery.hardwareStatement}
             aria-label="Hardware statement"
             onChange={(event) => update('appendix.joinery.hardwareStatement', event.target.value)}
           />
+          <span className="print-only quotation-print-value">{data.appendix.joinery.hardwareStatement}</span>
         </div>
       </section>
 
@@ -485,12 +492,13 @@ export default function QuotationAppendix({ data, update }) {
 
           <div className="quotation-statement quotation-statement--editable">
             <textarea
-              className="quotation-statement__input"
+              className="quotation-statement__input no-print"
               rows="2"
               value={data.appendix.stone.noteStatement}
               aria-label="Stone quotation notes"
               onChange={(event) => update('appendix.stone.noteStatement', event.target.value)}
             />
+            <span className="print-only quotation-print-value">{data.appendix.stone.noteStatement}</span>
           </div>
         </section>
       )}
