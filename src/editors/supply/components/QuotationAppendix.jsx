@@ -171,16 +171,6 @@ export default function QuotationAppendix({ data, update }) {
         />
 
         <div className="quotation-edit-controls no-print">
-          <label>
-            <span>Default rate per m² / 默认每平方米单价</span>
-            <input
-              type="number"
-              min="0"
-              step="1"
-              value={data.appendix.joinery.defaultRate}
-              onChange={(event) => update('appendix.joinery.defaultRate', event.target.value)}
-            />
-          </label>
           <label className="quotation-sync-control">
             <input
               type="checkbox"
@@ -203,6 +193,7 @@ export default function QuotationAppendix({ data, update }) {
                 <th><BilingualHeader en="Carcass Finish" zh="柜体饰面" /></th>
                 <th><BilingualHeader en="Door Finish" zh="柜门饰面" /></th>
                 <th><BilingualHeader en="Description" zh="说明" /></th>
+                <th className="no-print quotation-rate-column"><BilingualHeader en="Rate (AUD/m²)" zh="单价（澳元/平方米）" /></th>
               </tr>
             </thead>
             <tbody>
@@ -268,6 +259,17 @@ export default function QuotationAppendix({ data, update }) {
                       ×
                     </button>
                   </td>
+                  <td className="no-print quotation-rate-column">
+                    <input
+                      className="quotation-input quotation-input--number"
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={data.appendix.joinery.rows[index].rate ?? ''}
+                      aria-label={`Joinery row ${index + 1} rate per square metre`}
+                      onChange={(event) => update(`appendix.joinery.rows.${index}.rate`, event.target.value)}
+                    />
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -284,6 +286,7 @@ export default function QuotationAppendix({ data, update }) {
                     onChange={(value) => update('appendix.joinery.totalPriceOverride', value)}
                   />
                 </td>
+                <td className="no-print quotation-rate-column" />
               </tr>
             </tfoot>
           </table>
@@ -319,16 +322,6 @@ export default function QuotationAppendix({ data, update }) {
           />
 
           <div className="quotation-edit-controls no-print">
-            <label>
-              <span>Default rate per m² / 默认每平方米单价</span>
-              <input
-                type="number"
-                min="0"
-                step="1"
-                value={data.appendix.stone.defaultRate}
-                onChange={(event) => update('appendix.stone.defaultRate', event.target.value)}
-              />
-            </label>
             <label className="quotation-sync-control">
               <input
                 type="checkbox"
@@ -349,6 +342,7 @@ export default function QuotationAppendix({ data, update }) {
                   <th><BilingualHeader en="Width (mm)" zh="宽（毫米）" /></th>
                   <th><BilingualHeader en="Colour / Pattern" zh="花色" /></th>
                   <th><BilingualHeader en="Thickness (mm)" zh="厚度（毫米）" /></th>
+                  <th className="no-print quotation-rate-column"><BilingualHeader en="Rate (AUD/m²)" zh="单价（澳元/平方米）" /></th>
                 </tr>
               </thead>
               <tbody>
@@ -406,6 +400,17 @@ export default function QuotationAppendix({ data, update }) {
                         ×
                       </button>
                     </td>
+                    <td className="no-print quotation-rate-column">
+                      <input
+                        className="quotation-input quotation-input--number"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={data.appendix.stone.rows[index].rate ?? ''}
+                        aria-label={`Stone row ${index + 1} rate per square metre`}
+                        onChange={(event) => update(`appendix.stone.rows.${index}.rate`, event.target.value)}
+                      />
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -420,6 +425,7 @@ export default function QuotationAppendix({ data, update }) {
                       onChange={(value) => update('appendix.stone.totalPriceOverride', value)}
                     />
                   </td>
+                  <td className="no-print quotation-rate-column" />
                 </tr>
               </tfoot>
             </table>

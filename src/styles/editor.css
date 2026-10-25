@@ -1512,3 +1512,30 @@
     min-width: 920px;
   }
 }
+
+/* Row pricing is an editing control; print retains the original columns. */
+@media screen {
+  .quotation-table--joinery {
+    min-width: 1000px;
+  }
+
+  .quotation-table--joinery thead th:nth-child(8) { width: 15%; }
+  .quotation-table--joinery thead th.quotation-rate-column { width: 12%; }
+
+  .quotation-rate-column .quotation-input {
+    background: #f7fafb;
+    border: 1px solid #cbd5dc;
+    border-radius: 4px;
+  }
+}
+
+@media screen {
+  .quotation-table--stone { min-width: 1000px; }
+  .quotation-table--stone thead th:nth-child(1),
+  .quotation-table--stone thead th:nth-child(2) { width: 16%; }
+  .quotation-table--stone thead th:nth-child(3),
+  .quotation-table--stone thead th:nth-child(4) { width: 10%; }
+  .quotation-table--stone thead th:nth-child(5) { width: 20%; }
+  .quotation-table--stone thead th:nth-child(6) { width: 16%; }
+  .quotation-table--stone thead th.quotation-rate-column { width: 12%; }
+}

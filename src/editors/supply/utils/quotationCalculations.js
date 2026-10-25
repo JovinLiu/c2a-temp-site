@@ -7,10 +7,6 @@ export function calculateArea(length, heightOrWidth) {
   return (lengthValue * secondValue) / 1_000_000;
 }
 
-function effectiveRate(rowRate, defaultRate) {
-  return numericValue(rowRate) || numericValue(defaultRate);
-}
-
 function hasEnteredValue(value) {
   return value !== '' && value !== null && value !== undefined;
 }
@@ -19,14 +15,14 @@ export function calculateJoineryQuotation(joinery) {
   const rows = joinery?.rows || [];
   const calculatedRows = rows.map((row) => {
     const area = calculateArea(row.length, row.height);
-    const rate = effectiveRate(row.rate, joinery.defaultRate);
+    const rate = numericValue(row.rate);
     return { ...row, area, rate, amount: area * rate };
   });
   const totalArea = calculatedRows.reduce((sum, row) => sum + row.area, 0);
   const calculatedPrice = calculatedRows.reduce((sum, row) => sum + row.amount, 0);
   const override = numericValue(joinery?.totalPriceOverride);
   const hasOverride = hasEnteredValue(joinery?.totalPriceOverride);
-  const hasCalculatedPrice = calculatedRows.some((row) => row.area > 0 && row.rate > 0);
+  const hasCalculatedPrice = rows.some((row) => calculateArea(row.length, row.height) > 0 && hasEnteredValue(row.rate));
   const totalPrice = hasOverride ? override : calculatedPrice;
   return { rows: calculatedRows, totalArea, totalPrice, hasPrice: hasOverride || hasCalculatedPrice };
 }
@@ -35,13 +31,13 @@ export function calculateStoneQuotation(stone) {
   const rows = stone?.rows || [];
   const calculatedRows = rows.map((row) => {
     const area = calculateArea(row.length, row.width);
-    const rate = effectiveRate(row.rate, stone.defaultRate);
+    const rate = numericValue(row.rate);
     return { ...row, area, rate, amount: area * rate };
   });
   const calculatedPrice = calculatedRows.reduce((sum, row) => sum + row.amount, 0);
   const override = numericValue(stone?.totalPriceOverride);
   const hasOverride = hasEnteredValue(stone?.totalPriceOverride);
-  const hasCalculatedPrice = calculatedRows.some((row) => row.area > 0 && row.rate > 0);
+  const hasCalculatedPrice = rows.some((row) => calculateArea(row.length, row.width) > 0 && hasEnteredValue(row.rate));
   const totalPrice = hasOverride ? override : calculatedPrice;
   return { rows: calculatedRows, totalPrice, hasPrice: hasOverride || hasCalculatedPrice };
 }

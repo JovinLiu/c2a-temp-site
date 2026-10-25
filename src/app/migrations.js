@@ -1,3 +1,4 @@
+import { numericValue } from '../editors/supply/utils/formatters.js';
 import { defaultAgreement as defaultSupplyAgreement } from '../editors/supply/data/defaultAgreement.js';
 import { defaultAgreement as defaultInstallationAgreement } from '../editors/installation/data/defaultAgreement.js';
 
@@ -43,6 +44,18 @@ function clone(value) {
 
 export function migrateSupplyAgreement(value) {
   const next = clone(value);
+  // Expand legacy shared pricing into editable row rates on load and JSON import.
+  for (const quotation of [next.appendix?.joinery, next.appendix?.stone]) {
+    if (quotation && quotation.defaultRate !== '' && quotation.defaultRate != null) {
+      quotation.rows = (quotation.rows || []).map((row) => ({
+        ...row,
+        // Legacy calculation treated zero/empty rates as the shared default.
+        rate: numericValue(row.rate) ? row.rate : quotation.defaultRate,
+      }));
+      quotation.defaultRate = '';
+    }
+  }
+
   const secondPayment = next.paymentStages?.[1];
   const thirdPayment = next.paymentStages?.[2];
   const defaultSecondPayment = defaultSupplyAgreement.paymentStages[1];
