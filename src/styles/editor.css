@@ -1539,3 +1539,38 @@
   .quotation-table--stone thead th:nth-child(6) { width: 16%; }
   .quotation-table--stone thead th.quotation-rate-column { width: 12%; }
 }
+
+/* Amounts are customer-facing; square-metre rates remain screen-only. */
+.quotation-row-amount-editor input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.quotation-row-amount-editor button {
+  border: 0;
+  background: transparent;
+  color: #205968;
+  font: inherit;
+  cursor: pointer;
+}
+.quotation-amount-column { text-align: right; }
+.quotation-table .quotation-price-editor input { min-width: 0; max-width: 100%; flex: 1; }
+@media screen {
+  .quotation-table--joinery { min-width: 1150px; }
+  .quotation-table--joinery thead th:nth-child(1),
+  .quotation-table--joinery thead th:nth-child(2) { width: 9%; }
+  .quotation-table--joinery thead th:nth-child(6),
+  .quotation-table--joinery thead th:nth-child(7) { width: 11%; }
+  .quotation-table--joinery thead th:nth-child(8) { width: 13%; }
+  .quotation-table--joinery thead th.quotation-amount-column { width: 12%; }
+  .quotation-table--stone thead th:nth-child(1),
+  .quotation-table--stone thead th:nth-child(2) { width: 14%; }
+  .quotation-table--stone thead th:nth-child(5) { width: 16%; }
+  .quotation-table--stone thead th:nth-child(6) { width: 10%; }
+  .quotation-table--stone thead th.quotation-amount-column { width: 14%; }
+}
+@media print {
+  .quotation-table--joinery thead th:nth-child(8) { width: 15%; }
+  .quotation-table--joinery thead th.quotation-amount-column { width: 12%; }
+  .quotation-table--stone thead th:nth-child(n) { width: 14.2857%; }
+}

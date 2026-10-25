@@ -50,4 +50,31 @@ for (const kind of ['joinery', 'stone']) {
     data.commercial[`${kind}Price`] = '700';
     assert.equal(calculateSupplyAgreementAmounts(data)[`${kind}Price`], '700');
   });
+  test(`${kind}: row amount overrides, zero, reset, sync and persistence`, () => {
+    const value = quotation([{ ...row('100'), amountOverride: '250.25' }, row('200')]);
+    assert.equal(total(value).totalPrice, 850.25);
+    value.rows[0].rate = '500';
+    assert.equal(total(value).rows[0].amount, 250.25);
+    value.rows[0].amountOverride = '0';
+    assert.equal(total(value).totalPrice, 600);
+    value.rows[0].amountOverride = '';
+    assert.equal(total(value).totalPrice, 2100);
+    value.rows = [{ amountOverride: '123.45' }];
+    assert.equal(total(value).hasPrice, true);
+    assert.equal(total(value).totalPrice, 123.45);
+    const data = migrateSupplyAgreement(mergeAgreement(defaultAgreement, JSON.parse(JSON.stringify({
+      appendix: { [kind]: value }, commercial: { includeStone: true },
+    }))));
+    assert.equal(data.appendix[kind].rows[0].amountOverride, '123.45');
+    assert.equal(calculateSupplyAgreementAmounts(data)[`${kind}Price`], 123.45);
+    data.appendix[kind].totalPriceOverride = '900';
+    assert.equal(calculateSupplyAgreementAmounts(data)[`${kind}Price`], 900);
+  });
+
+  test(`${kind}: totals sum the displayed rounded row amounts`, () => {
+    const value = quotation([row('100.111'), row('100.111')]);
+    assert.equal(total(value).rows[0].amount, 300.33);
+    assert.equal(total(value).totalPrice, 600.66);
+  });
+
 }

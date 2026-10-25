@@ -11,6 +11,7 @@ const emptyJoineryRow = () => ({
   doorFinish: '',
   description: '',
   rate: '',
+  amountOverride: '',
 });
 
 const emptyStoneRow = () => ({
@@ -21,6 +22,7 @@ const emptyStoneRow = () => ({
   colourPattern: '',
   thickness: '',
   rate: '',
+  amountOverride: '',
 });
 
 function BilingualHeader({ en, zh }) {
@@ -55,6 +57,31 @@ function EditableNumber({ value, onChange, ariaLabel }) {
       aria-label={ariaLabel}
       onChange={(event) => onChange(event.target.value)}
     />
+  );
+}
+
+function RowAmountEditor({ row, ariaLabel, onChange }) {
+  return (
+    <>
+      <div className="quotation-row-amount-editor no-print">
+        <input
+          className="quotation-input quotation-input--number"
+          type="number"
+          min="0"
+          step="0.01"
+          value={row.hasAmountOverride ? row.amountOverride : row.hasAmount ? row.amount.toFixed(2) : ''}
+          aria-label={ariaLabel}
+          title="Enter an amount to override; clear to calculate automatically / 输入金额覆盖，清空恢复自动计算"
+          onChange={(event) => onChange(event.target.value)}
+        />
+        {row.hasAmountOverride && (
+          <button type="button" onClick={() => onChange('')} aria-label={`${ariaLabel} restore automatic calculation`}>
+            Auto / 自动
+          </button>
+        )}
+      </div>
+      <span className="print-only">{row.hasAmount ? formatCurrency(row.amount) : ''}</span>
+    </>
   );
 }
 
@@ -193,6 +220,7 @@ export default function QuotationAppendix({ data, update }) {
                 <th><BilingualHeader en="Carcass Finish" zh="柜体饰面" /></th>
                 <th><BilingualHeader en="Door Finish" zh="柜门饰面" /></th>
                 <th><BilingualHeader en="Description" zh="说明" /></th>
+                <th className="quotation-amount-column"><BilingualHeader en="Amount (AUD)" zh="金额（澳元）" /></th>
                 <th className="no-print quotation-rate-column"><BilingualHeader en="Rate (AUD/m²)" zh="单价（澳元/平方米）" /></th>
               </tr>
             </thead>
@@ -259,6 +287,13 @@ export default function QuotationAppendix({ data, update }) {
                       ×
                     </button>
                   </td>
+                  <td className="quotation-number quotation-amount-column">
+                    <RowAmountEditor
+                      row={row}
+                      ariaLabel={`Joinery row ${index + 1} amount`}
+                      onChange={(value) => update(`appendix.joinery.rows.${index}.amountOverride`, value)}
+                    />
+                  </td>
                   <td className="no-print quotation-rate-column">
                     <input
                       className="quotation-input quotation-input--number"
@@ -277,7 +312,7 @@ export default function QuotationAppendix({ data, update }) {
               <tr>
                 <th colSpan="4"><BilingualHeader en="Total Projection Area" zh="投影面积总计" /></th>
                 <td className="quotation-number quotation-total-value">{totals.joinery.totalArea.toFixed(2)} m²</td>
-                <th colSpan="2"><BilingualHeader en="Total Price" zh="总价格" /></th>
+                <th colSpan="3"><BilingualHeader en="Total Price" zh="总价格" /></th>
                 <td className="quotation-total-value">
                   <PriceEditor
                     value={data.appendix.joinery.totalPriceOverride}
@@ -342,6 +377,7 @@ export default function QuotationAppendix({ data, update }) {
                   <th><BilingualHeader en="Width (mm)" zh="宽（毫米）" /></th>
                   <th><BilingualHeader en="Colour / Pattern" zh="花色" /></th>
                   <th><BilingualHeader en="Thickness (mm)" zh="厚度（毫米）" /></th>
+                  <th className="quotation-amount-column"><BilingualHeader en="Amount (AUD)" zh="金额（澳元）" /></th>
                   <th className="no-print quotation-rate-column"><BilingualHeader en="Rate (AUD/m²)" zh="单价（澳元/平方米）" /></th>
                 </tr>
               </thead>
@@ -400,6 +436,13 @@ export default function QuotationAppendix({ data, update }) {
                         ×
                       </button>
                     </td>
+                    <td className="quotation-number quotation-amount-column">
+                      <RowAmountEditor
+                        row={row}
+                        ariaLabel={`Stone row ${index + 1} amount`}
+                        onChange={(value) => update(`appendix.stone.rows.${index}.amountOverride`, value)}
+                      />
+                    </td>
                     <td className="no-print quotation-rate-column">
                       <input
                         className="quotation-input quotation-input--number"
@@ -416,7 +459,7 @@ export default function QuotationAppendix({ data, update }) {
               </tbody>
               <tfoot>
                 <tr>
-                  <th colSpan="5"><BilingualHeader en="Total Price" zh="总价格" /></th>
+                  <th colSpan="6"><BilingualHeader en="Total Price" zh="总价格" /></th>
                   <td className="quotation-total-value">
                     <PriceEditor
                       value={data.appendix.stone.totalPriceOverride}
