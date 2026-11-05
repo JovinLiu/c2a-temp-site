@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>C2A Cabinetry</title>
+  <rect width="64" height="64" rx="14" fill="#172A2C"/>
+  <path d="M46 17H21a4 4 0 0 0-4 4v22a4 4 0 0 0 4 4h25" stroke="#F6F1E7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M34 18v28M46 25v14" stroke="#C9A66F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M25 29v6" stroke="#F6F1E7" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -61,8 +61,9 @@ export function RowAmountEditor({ row, ariaLabel, onChange }) {
             type="button"
             onClick={() => onChange('')}
             aria-label={`${ariaLabel} restore automatic calculation`}
+            title="恢复自动计算"
           >
-            Auto / 自动
+            自动
           </button>
         )}
       </div>
@@ -91,8 +92,9 @@ export function RowAreaEditor({ row, ariaLabel, onChange }) {
             type="button"
             onClick={() => onChange('')}
             aria-label={`${ariaLabel} restore automatic calculation`}
+            title="恢复自动计算"
           >
-            Auto / 自动
+            自动
           </button>
         )}
       </div>
