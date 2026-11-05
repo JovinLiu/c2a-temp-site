@@ -95,7 +95,9 @@ export function migrateSupplyAgreement(value) {
 export function migrateInstallationAgreement(value) {
   const next = clone(value);
   const clause = next.scopeClauses?.find((item) => item?.number === '1.4');
-  const defaultClause = defaultInstallationAgreement.scopeClauses.find((item) => item.number === '1.4');
+  const defaultClause = defaultInstallationAgreement.scopeClauses.find(
+    (item) => item.number === '1.4',
+  );
 
   if (clause && defaultClause) {
     if (OLD_INSTALLATION_SCOPE_14_EN.has(clause.en ?? '')) {

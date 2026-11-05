@@ -1,3 +1,4 @@
+// Legacy session format retained for reference. Active authentication is lib/server/auth.js.
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 export const SESSION_COOKIE_NAME = 'c2a_agreement_session';
@@ -45,7 +46,11 @@ export function verifySessionToken(token: string | undefined, secret: string): b
 
   try {
     const payload = JSON.parse(base64UrlDecode(encodedPayload)) as SessionPayload;
-    return payload.version === 1 && Number.isFinite(payload.exp) && payload.exp > Math.floor(Date.now() / 1000);
+    return (
+      payload.version === 1 &&
+      Number.isFinite(payload.exp) &&
+      payload.exp > Math.floor(Date.now() / 1000)
+    );
   } catch {
     return false;
   }
@@ -69,7 +74,9 @@ export function buildSessionCookie(token: string, secure = true): string {
     'HttpOnly',
     secure ? 'Secure' : '',
     'SameSite=Strict',
-  ].filter(Boolean).join('; ');
+  ]
+    .filter(Boolean)
+    .join('; ');
 }
 
 export function buildExpiredSessionCookie(secure = true): string {
@@ -80,7 +87,9 @@ export function buildExpiredSessionCookie(secure = true): string {
     'HttpOnly',
     secure ? 'Secure' : '',
     'SameSite=Strict',
-  ].filter(Boolean).join('; ');
+  ]
+    .filter(Boolean)
+    .join('; ');
 }
 
 export function passwordsMatch(submitted: string, configured: string): boolean {

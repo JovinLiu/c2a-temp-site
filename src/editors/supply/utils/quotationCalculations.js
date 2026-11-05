@@ -11,20 +11,25 @@ function hasEnteredValue(value) {
   return value !== '' && value !== null && value !== undefined;
 }
 
-function calculateRow(row, area) {
+function calculateRow(row, area, hasAreaOverride = false) {
   const rate = numericValue(row.rate);
   const hasAmountOverride = hasEnteredValue(row.amountOverride);
-  const hasAmount = hasAmountOverride || (area > 0 && hasEnteredValue(row.rate));
+  const hasAmount =
+    hasAmountOverride || ((area > 0 || hasAreaOverride) && hasEnteredValue(row.rate));
   const calculatedAmount = Number((area * rate).toFixed(2));
-  const amount = hasAmountOverride ? Number(numericValue(row.amountOverride).toFixed(2)) : calculatedAmount;
+  const amount = hasAmountOverride
+    ? Number(numericValue(row.amountOverride).toFixed(2))
+    : calculatedAmount;
   return { ...row, area, rate, calculatedAmount, amount, hasAmount, hasAmountOverride };
 }
 
 export function calculateJoineryQuotation(joinery) {
   const rows = joinery?.rows || [];
   const calculatedRows = rows.map((row) => {
-    const area = calculateArea(row.length, row.height);
-    return calculateRow(row, area);
+    const calculatedArea = calculateArea(row.length, row.height);
+    const hasAreaOverride = hasEnteredValue(row.areaOverride);
+    const area = hasAreaOverride ? numericValue(row.areaOverride) : calculatedArea;
+    return { ...calculateRow(row, area, hasAreaOverride), calculatedArea, hasAreaOverride };
   });
   const totalArea = calculatedRows.reduce((sum, row) => sum + row.area, 0);
   const calculatedPrice = calculatedRows.reduce((sum, row) => sum + row.amount, 0);
@@ -32,7 +37,12 @@ export function calculateJoineryQuotation(joinery) {
   const hasOverride = hasEnteredValue(joinery?.totalPriceOverride);
   const hasCalculatedPrice = calculatedRows.some((row) => row.hasAmount);
   const totalPrice = hasOverride ? override : calculatedPrice;
-  return { rows: calculatedRows, totalArea, totalPrice, hasPrice: hasOverride || hasCalculatedPrice };
+  return {
+    rows: calculatedRows,
+    totalArea,
+    totalPrice,
+    hasPrice: hasOverride || hasCalculatedPrice,
+  };
 }
 
 export function calculateStoneQuotation(stone) {
@@ -70,26 +80,28 @@ export function calculateSupplyAgreementAmounts(data) {
     data?.appendix?.joinery?.syncToContractPrice && appendixTotals.joinery.hasPrice,
   );
   const stoneIsSynced = Boolean(
-    commercial.includeStone
-      && data?.appendix?.stone?.syncToContractPrice
-      && appendixTotals.stone.hasPrice,
+    commercial.includeStone &&
+    data?.appendix?.stone?.syncToContractPrice &&
+    appendixTotals.stone.hasPrice,
   );
 
   const joineryPrice = joineryIsSynced
     ? appendixTotals.joinery.totalPrice
     : commercial.joineryPrice;
   const stonePrice = commercial.includeStone
-    ? (stoneIsSynced ? appendixTotals.stone.totalPrice : commercial.stonePrice)
+    ? stoneIsSynced
+      ? appendixTotals.stone.totalPrice
+      : commercial.stonePrice
     : '';
 
-  const productAndFreightTotal = numericValue(joineryPrice)
-    + numericValue(stonePrice)
-    + numericValue(commercial.freightCost);
-  const hasProductAndFreightValue = joineryIsSynced
-    || stoneIsSynced
-    || hasEnteredValue(commercial.joineryPrice)
-    || (commercial.includeStone && hasEnteredValue(commercial.stonePrice))
-    || hasEnteredValue(commercial.freightCost);
+  const productAndFreightTotal =
+    numericValue(joineryPrice) + numericValue(stonePrice) + numericValue(commercial.freightCost);
+  const hasProductAndFreightValue =
+    joineryIsSynced ||
+    stoneIsSynced ||
+    hasEnteredValue(commercial.joineryPrice) ||
+    (commercial.includeStone && hasEnteredValue(commercial.stonePrice)) ||
+    hasEnteredValue(commercial.freightCost);
 
   const firstPayment = paymentStages[0]?.amount ?? '';
   const installationFee = commercial.installationFee;
@@ -97,19 +109,14 @@ export function calculateSupplyAgreementAmounts(data) {
 
   const handlingFee = commercial.handlingFee;
   const wasteDisposalFee = commercial.wasteDisposalFee;
-  const hasThirdPaymentValue = hasProductAndFreightValue
-    || hasEnteredValue(handlingFee)
-    || hasEnteredValue(wasteDisposalFee);
+  const hasThirdPaymentValue =
+    hasProductAndFreightValue || hasEnteredValue(handlingFee) || hasEnteredValue(wasteDisposalFee);
 
   const automaticPaymentAmounts = [
     firstPayment,
-    hasProductAndFreightValue
-      ? productAndFreightTotal / 2 - numericValue(firstPayment)
-      : '',
+    hasProductAndFreightValue ? productAndFreightTotal / 2 - numericValue(firstPayment) : '',
     hasThirdPaymentValue
-      ? productAndFreightTotal / 2
-        + numericValue(handlingFee)
-        + numericValue(wasteDisposalFee)
+      ? productAndFreightTotal / 2 + numericValue(handlingFee) + numericValue(wasteDisposalFee)
       : '',
     hasInstallationFee ? numericValue(installationFee) / 2 : '',
     hasInstallationFee ? numericValue(installationFee) / 2 : '',

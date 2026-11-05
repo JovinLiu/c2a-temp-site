@@ -1,3 +1,4 @@
+// Legacy Vite entry point; the live Next.js app loads src/App.jsx through components/AgreementClient.jsx.
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';

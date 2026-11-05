@@ -1,19 +1,22 @@
 # C2A Cabinetry — Next.js website & workspace
 
-First working version of the public website and private business workspace, built with Next.js App Router and React.
+Public website and private business workspace, built with Next.js App Router and React.
+
+**手动修改入口：[网站维护指南](docs/MAINTENANCE.zh-CN.md)**。包含页面、报价、样式、配置文件对照表和验证步骤。
 
 ## Run locally
 
 Use Node.js 20.9+ (Node.js 24 recommended).
 
 ```sh
-npm install
+npm ci
+# Only if .env.local does not already exist:
 cp .env.example .env.local
 # Set ADMIN_USERNAME, ADMIN_PASSWORD and a random SESSION_SECRET of at least 32 characters.
 npm run dev
 ```
 
-Open http://127.0.0.1:3000. A local `.env.local` was already generated for this workspace; do not overwrite it unless changing the credentials. The username is `admin`; the generated password is in that file. Never commit it.
+Open http://127.0.0.1:3000. Set your own admin credentials in `.env.local`; never commit that file. If an environment file already exists, preserve it.
 
 ```sh
 npm run build
@@ -50,14 +53,16 @@ Before production deployment, replace the file adapter with a database and objec
 
 Remaining editorial work: approved company wording, factory photos/video, completed project media. The current text is an initial draft.
 
-## Verification
-
-`npm run build` checks the production build. With the local development server running and `.env.local` configured:
+## Verification and formatting
 
 ```sh
-node scripts/smoke-test.mjs
+npm run format:check
+npm test
+npm run build
+npm run test:integration
+npm audit
 ```
 
-The smoke test checks public/protected routes, credentials, origin checks, board persistence, upload, draft privacy, publish/unpublish, byte ranges and logout. It creates uniquely named temporary records and removes those records afterwards.
+Use `npm run format` after editing. The integration command starts a separate local server with random test credentials and a temporary data directory; it checks routes, sign-in, origin protection, board changes, uploads, draft privacy, publication, byte ranges and logout. Stop an existing development server in this same checkout before running it. Production data and saved credentials are not used.
 
 The original Vite entry files are retained as legacy source; `app/` is the active application. `src/editors/` contains the reused agreement tools.

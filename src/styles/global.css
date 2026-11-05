@@ -2,8 +2,8 @@
   --text: #1d252c;
   --text-h: #111827;
   --bg: #eef1f3;
-  --sans: "Avenir Next", "Helvetica Neue", sans-serif;
-  --heading: "Iowan Old Style", "Times New Roman", serif;
+  --sans: 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --heading: 'Iowan Old Style', 'Times New Roman', serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);

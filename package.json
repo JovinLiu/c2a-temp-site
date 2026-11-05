@@ -6,11 +6,18 @@
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
     "start": "next start --hostname 127.0.0.1",
-    "build": "next build"
+    "build": "next build",
+    "test": "node --test scripts/quotation-test.mjs scripts/domain-test.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:integration": "node scripts/integration-test.mjs"
   },
   "dependencies": {
-    "next": "^16.4.0",
+    "next": "^16.4.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
   }
 }

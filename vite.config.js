@@ -1,3 +1,4 @@
+// Legacy Vite configuration retained for reference. npm scripts use Next.js.
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 

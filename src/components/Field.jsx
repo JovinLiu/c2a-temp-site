@@ -1,4 +1,15 @@
-export function Field({ label, value, onChange, type = 'text', placeholder = '', min, max, step, readOnly = false, disabled = false }) {
+export function Field({
+  label,
+  value,
+  onChange,
+  type = 'text',
+  placeholder = '',
+  min,
+  max,
+  step,
+  readOnly = false,
+  disabled = false,
+}) {
   return (
     <label className="field">
       <span>{label}</span>

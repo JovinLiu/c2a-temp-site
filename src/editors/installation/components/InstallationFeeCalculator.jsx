@@ -63,7 +63,10 @@ export default function InstallationFeeCalculator({ data, update }) {
   };
 
   return (
-    <section className="document installation-fee-calculator no-print" aria-label="Installation fee calculator">
+    <section
+      className="document installation-fee-calculator no-print"
+      aria-label="Installation fee calculator"
+    >
       <header className="installation-fee-calculator__header">
         <h2>{quotation.title}</h2>
         <div lang="zh-CN">{quotation.titleZh}</div>
@@ -98,14 +101,30 @@ export default function InstallationFeeCalculator({ data, update }) {
         <table className="quotation-table quotation-table--joinery installation-fee-table">
           <thead>
             <tr>
-              <th><BilingualHeader en="Space Name" zh="空间名称" /></th>
-              <th><BilingualHeader en="Joinery Name" zh="家具名称" /></th>
-              <th><BilingualHeader en="Length (mm)" zh="长（毫米）" /></th>
-              <th><BilingualHeader en="Height (mm)" zh="高（毫米）" /></th>
-              <th><BilingualHeader en="Projection Area (m²)" zh="投影面积（平方米）" /></th>
-              <th><BilingualHeader en="Carcass Finish" zh="柜体饰面" /></th>
-              <th><BilingualHeader en="Door Finish" zh="柜门饰面" /></th>
-              <th><BilingualHeader en="Description" zh="说明" /></th>
+              <th>
+                <BilingualHeader en="Space Name" zh="空间名称" />
+              </th>
+              <th>
+                <BilingualHeader en="Joinery Name" zh="家具名称" />
+              </th>
+              <th>
+                <BilingualHeader en="Length (mm)" zh="长（毫米）" />
+              </th>
+              <th>
+                <BilingualHeader en="Height (mm)" zh="高（毫米）" />
+              </th>
+              <th>
+                <BilingualHeader en="Projection Area (m²)" zh="投影面积（平方米）" />
+              </th>
+              <th>
+                <BilingualHeader en="Carcass Finish" zh="柜体饰面" />
+              </th>
+              <th>
+                <BilingualHeader en="Door Finish" zh="柜门饰面" />
+              </th>
+              <th>
+                <BilingualHeader en="Description" zh="说明" />
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -115,28 +134,36 @@ export default function InstallationFeeCalculator({ data, update }) {
                   <EditableTextCell
                     value={row.spaceName}
                     ariaLabel={`Installation row ${index + 1} space name`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.spaceName`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.spaceName`, value)
+                    }
                   />
                 </td>
                 <td>
                   <EditableTextCell
                     value={row.joineryName}
                     ariaLabel={`Installation row ${index + 1} joinery name`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.joineryName`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.joineryName`, value)
+                    }
                   />
                 </td>
                 <td className="quotation-number">
                   <EditableNumber
                     value={row.length}
                     ariaLabel={`Installation row ${index + 1} length`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.length`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.length`, value)
+                    }
                   />
                 </td>
                 <td className="quotation-number">
                   <EditableNumber
                     value={row.height}
                     ariaLabel={`Installation row ${index + 1} height`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.height`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.height`, value)
+                    }
                   />
                 </td>
                 <td className="quotation-number quotation-formula">{displayArea(row.area)}</td>
@@ -144,21 +171,27 @@ export default function InstallationFeeCalculator({ data, update }) {
                   <EditableTextCell
                     value={row.carcassFinish}
                     ariaLabel={`Installation row ${index + 1} carcass finish`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.carcassFinish`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.carcassFinish`, value)
+                    }
                   />
                 </td>
                 <td>
                   <EditableTextCell
                     value={row.doorFinish}
                     ariaLabel={`Installation row ${index + 1} door finish`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.doorFinish`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.doorFinish`, value)
+                    }
                   />
                 </td>
                 <td className="quotation-row-action-cell">
                   <EditableTextCell
                     value={row.description}
                     ariaLabel={`Installation row ${index + 1} description`}
-                    onChange={(value) => update(`installationQuotation.rows.${index}.description`, value)}
+                    onChange={(value) =>
+                      update(`installationQuotation.rows.${index}.description`, value)
+                    }
                   />
                   <button
                     className="quotation-remove-row"
@@ -176,11 +209,19 @@ export default function InstallationFeeCalculator({ data, update }) {
           </tbody>
           <tfoot>
             <tr>
-              <th colSpan="4"><BilingualHeader en="Total Projection Area" zh="投影面积总计" /></th>
-              <td className="quotation-number quotation-total-value">{totals.totalArea.toFixed(2)} m²</td>
-              <th colSpan="2"><BilingualHeader en="Calculated Installation Fee" zh="计算安装费" /></th>
+              <th colSpan="4">
+                <BilingualHeader en="Total Projection Area" zh="投影面积总计" />
+              </th>
+              <td className="quotation-number quotation-total-value">
+                {totals.totalArea.toFixed(2)} m²
+              </td>
+              <th colSpan="2">
+                <BilingualHeader en="Calculated Installation Fee" zh="计算安装费" />
+              </th>
               <td className="quotation-total-value">
-                {totals.hasCalculatedFee ? formatCurrency(totals.totalFee) : '[Enter dimensions and rate]'}
+                {totals.hasCalculatedFee
+                  ? formatCurrency(totals.totalFee)
+                  : '[Enter dimensions and rate]'}
               </td>
             </tr>
           </tfoot>

@@ -9,8 +9,7 @@ export const defaultAgreement = {
     reference: '',
     statusNote:
       'Complete all highlighted commercial fields and review the final drawings, product schedule and payment amounts before signing.',
-    statusNoteZh:
-      '签署前请填写所有商业信息，并核对最终图纸、产品清单及各阶段付款金额。',
+    statusNoteZh: '签署前请填写所有商业信息，并核对最终图纸、产品清单及各阶段付款金额。',
   },
   supplier: {
     name: 'C2A Joinery Pty Ltd',
@@ -33,8 +32,7 @@ export const defaultAgreement = {
       '供应及安装方同意根据客户的设计要求及最终批准的图纸，为客户供应并安装全屋定制产品及石材产品。',
     productSchedule:
       'The products to be supplied are listed in the Product and Price Schedule attached to this Agreement.',
-    productScheduleZh:
-      '本协议项下供应的产品以本协议所附《产品及价格清单》为准。',
+    productScheduleZh: '本协议项下供应的产品以本协议所附《产品及价格清单》为准。',
     finalDrawings:
       'The final configuration, dimensions, finishes and materials of the custom joinery shall be based on the final CAD drawings approved by the Client. If the Client requests any material or substantial change after this Agreement is signed, the Supplier and Installer may revise the contract price, production timeframe, freight cost and installation schedule accordingly. The final product price and sea freight charges shall be calculated by reference to the final approved CAD drawings.',
     finalDrawingsZh:
@@ -120,7 +118,8 @@ export const defaultAgreement = {
     estimatedCommencement: '',
     productionPeriod: 'approximately 4 weeks',
     productionPeriodZh: '约 4 周',
-    seaFreightPeriod: 'approximately 3 to 4 weeks from vessel departure to arrival at the Port of Melbourne',
+    seaFreightPeriod:
+      'approximately 3 to 4 weeks from vessel departure to arrival at the Port of Melbourne',
     seaFreightPeriodZh: '自船舶离港至抵达墨尔本港约 3 至 4 周',
     estimatedInstallation: '',
     shippingDelay:
@@ -137,7 +136,8 @@ export const defaultAgreement = {
       title: 'First Payment',
       titleZh: '第一笔付款',
       amount: '2000',
-      calculation: 'Fixed deposit amount, less any eligible preliminary measurement and design fee credit',
+      calculation:
+        'Fixed deposit amount, less any eligible preliminary measurement and design fee credit',
       calculationZh: '固定定金金额，扣除符合条件的前期量尺及设计服务费抵扣额',
       timing:
         'The Client shall pay this amount as the initial deposit. If the Client previously entered into a Preliminary Measurement and Design Services Agreement with the Supplier and paid the relevant service fee, that paid fee will be credited against the First Payment. Any credit exceeding the First Payment may be applied against the later product charges under this Agreement.',
@@ -154,8 +154,7 @@ export const defaultAgreement = {
         '全屋定制产品价格、石材产品价格及预计海运和陆运费用合计金额的 50%，再扣除第一笔付款',
       timing:
         'The Second Payment is payable before production commences. Production is not required to commence until cleared payment has been received.',
-      timingZh:
-        '第二笔付款应在生产开始前支付。在供应及安装方收到已到账款项之前，无须开始生产。',
+      timingZh: '第二笔付款应在生产开始前支付。在供应及安装方收到已到账款项之前，无须开始生产。',
     },
     {
       title: 'Third Payment',
@@ -167,8 +166,7 @@ export const defaultAgreement = {
         '全屋定制产品价格、石材产品价格及预计海运和陆运费用合计金额的 50%，再加搬运费用及包装、托盘和垃圾处理费用',
       timing:
         'The Third Payment is payable on the day all products are delivered to the project site.',
-      timingZh:
-        '第三笔付款应在全部产品交付至项目现场当天支付。',
+      timingZh: '第三笔付款应在全部产品交付至项目现场当天支付。',
     },
     {
       title: 'Fourth Payment',
@@ -235,64 +233,56 @@ export const defaultAgreement = {
     {
       title: 'Door and Drawer Front Alignment Issues',
       titleZh: '柜门及抽屉面板对齐问题',
-      body:
-        'Examples include slight panel misalignment, uneven gaps or difficulty opening and closing, particularly during the initial period of use or because of minor building movement. Remedy may include hinge adjustment, gap alignment and position correction. Covered where the issue falls within installation adjustment and commissioning.',
+      body: 'Examples include slight panel misalignment, uneven gaps or difficulty opening and closing, particularly during the initial period of use or because of minor building movement. Remedy may include hinge adjustment, gap alignment and position correction. Covered where the issue falls within installation adjustment and commissioning.',
       bodyZh:
         '例如面板轻微错位、缝隙不均或开启关闭不顺，尤其可能发生在初期使用阶段或建筑物轻微移动后。处理方式包括调整铰链、校正缝隙及位置。属于安装调试范围的问题在质保期内免费处理。',
     },
     {
       title: 'Panel Warping, Distortion or Expansion',
       titleZh: '板材翘曲、变形或膨胀',
-      body:
-        'The Supplier and Installer will inspect site conditions and heat protection and, where reasonably repairable, rectify the issue or replace the affected panel. Covered where caused by product quality, manufacturing defects or an unreasonable design outcome under normal use. Not covered where caused by water ingress, extreme environmental conditions or direct heat exposure.',
+      body: 'The Supplier and Installer will inspect site conditions and heat protection and, where reasonably repairable, rectify the issue or replace the affected panel. Covered where caused by product quality, manufacturing defects or an unreasonable design outcome under normal use. Not covered where caused by water ingress, extreme environmental conditions or direct heat exposure.',
       bodyZh:
         '供应及安装方将检查现场环境及隔热保护，并在可合理修复的情况下进行整改或更换受影响板件。在正常使用条件下因产品质量、制造缺陷或不合理设计结果造成的问题属于质保范围；因进水、极端环境或直接高温造成的问题不属于质保范围。',
     },
     {
       title: 'Surface Scratches, Chips or Paint Damage',
       titleZh: '表面划痕、崩边或漆面损坏',
-      body:
-        'Transport or installation damage raised before acceptance will be rectified. After acceptance, defects caused by material quality or manufacturing issues will also be repaired or replaced. Damage caused by misuse, scratching or impact is not covered.',
+      body: 'Transport or installation damage raised before acceptance will be rectified. After acceptance, defects caused by material quality or manufacturing issues will also be repaired or replaced. Damage caused by misuse, scratching or impact is not covered.',
       bodyZh:
         '在验收前提出的运输或安装损伤将由供应及安装方整改。验收后，如缺陷由材料质量或制造问题造成，也将进行维修或更换。因使用不当、刮擦或撞击造成的损坏不属于质保范围。',
     },
     {
       title: 'Loose Hinges, Noise, or Soft-Close / Rebound Failure',
       titleZh: '铰链松动、异响或缓冲／反弹功能失效',
-      body:
-        'Remedy may include tightening, lubrication, adjustment or replacement of hinges. Covered where caused by hardware defects or installation issues. Not covered where caused by misuse, pulling, impact or deformation due to external force.',
+      body: 'Remedy may include tightening, lubrication, adjustment or replacement of hinges. Covered where caused by hardware defects or installation issues. Not covered where caused by misuse, pulling, impact or deformation due to external force.',
       bodyZh:
         '处理方式包括紧固、润滑、调整或更换铰链。因五金缺陷或安装问题造成的情况属于质保范围；因误用、拉扯、撞击或外力变形造成的情况不属于质保范围。',
     },
     {
       title: 'Drawer Runner Jamming, Poor Return, or Drawer Sagging',
       titleZh: '抽屉滑轨卡滞、回位不良或抽屉下沉',
-      body:
-        'Remedy may include cleaning foreign matter from the runners, re-adjustment, re-fixing or replacement. Covered where caused by product defects or installation issues. Not covered where caused by overloading, long-term excessive weight or obstruction in the track.',
+      body: 'Remedy may include cleaning foreign matter from the runners, re-adjustment, re-fixing or replacement. Covered where caused by product defects or installation issues. Not covered where caused by overloading, long-term excessive weight or obstruction in the track.',
       bodyZh:
         '处理方式包括清理滑轨异物、重新调整、重新固定或更换滑轨。因产品缺陷或安装问题造成的情况属于质保范围；因超载、长期放置过重物品或轨道堵塞造成的情况不属于质保范围。',
     },
     {
       title: 'Loose Handles, C-Channel Handles, or J-Channel Handles',
       titleZh: '拉手、C 型槽拉手或 J 型槽拉手松动',
-      body:
-        'Remedy may include re-tightening screws or replacing handles, screws or profile sections. Covered where caused by product defects or installation issues. Not covered where caused by misuse, impact damage or unauthorised removal or modification.',
+      body: 'Remedy may include re-tightening screws or replacing handles, screws or profile sections. Covered where caused by product defects or installation issues. Not covered where caused by misuse, impact damage or unauthorised removal or modification.',
       bodyZh:
         '处理方式包括重新紧固螺丝，或更换拉手、螺丝及型材部件。因产品缺陷或安装问题造成的情况属于质保范围；因误用、撞击损坏或未经授权的拆卸及改装造成的情况不属于质保范围。',
     },
     {
       title: 'Edge Banding Delamination or Lifting',
       titleZh: '封边脱胶或翘起',
-      body:
-        'The Supplier and Installer may re-bond the edge banding or replace the affected panel. Covered where caused by manufacturing or workmanship defects. Not covered where caused by prolonged moisture exposure or water damage.',
+      body: 'The Supplier and Installer may re-bond the edge banding or replace the affected panel. Covered where caused by manufacturing or workmanship defects. Not covered where caused by prolonged moisture exposure or water damage.',
       bodyZh:
         '供应及安装方可重新粘合封边或更换受影响板件。因制造或工艺缺陷造成的问题属于质保范围；因长期受潮或水损造成的问题不属于质保范围。',
     },
     {
       title: 'Loose Cabinet Connectors or Sagging Shelves',
       titleZh: '柜体连接件松动或层板下沉',
-      body:
-        'Remedy may include reinforcing fittings, adjusting shelf supports, adding support components or replacing the shelf. Covered where caused by installation or material defects. Not covered where caused by long-term overloading or excessive weight storage.',
+      body: 'Remedy may include reinforcing fittings, adjusting shelf supports, adding support components or replacing the shelf. Covered where caused by installation or material defects. Not covered where caused by long-term overloading or excessive weight storage.',
       bodyZh:
         '处理方式包括加固连接件、调整层板托、增加支撑部件或更换层板。因安装或材料缺陷造成的问题属于质保范围；因长期超载或存放过重物品造成的问题不属于质保范围。',
     },
@@ -300,8 +290,7 @@ export const defaultAgreement = {
       visibility: 'stone',
       title: 'Benchtop and Stone Splashback Joint Issues',
       titleZh: '台面及石材防溅板接缝问题',
-      body:
-        'This includes noticeable colour variation at a joint or joint and sealant lines that are excessively visible. Remedy may include grinding, polishing, resealing or reapplying joint filler. Covered where caused by workmanship and where the result exceeds reasonable industry tolerances.',
+      body: 'This includes noticeable colour variation at a joint or joint and sealant lines that are excessively visible. Remedy may include grinding, polishing, resealing or reapplying joint filler. Covered where caused by workmanship and where the result exceeds reasonable industry tolerances.',
       bodyZh:
         '包括接缝处明显色差，或接缝线及密封胶线过于明显。处理方式包括打磨、抛光、重新密封或重新填补接缝。因施工工艺造成且超出合理行业公差的问题属于质保范围。',
     },
@@ -309,8 +298,7 @@ export const defaultAgreement = {
       visibility: 'stone',
       title: 'Stone Chipping, Cracking, or Thermal Fracture',
       titleZh: '石材崩边、开裂或热裂',
-      body:
-        'Minor chips may be repaired and polished; cracks may require replacement of the affected section depending on their extent. Covered where caused by material defects or inadequate installation support under normal use. Not covered where caused by impact, improper use, unsupported loading or direct exposure to excessive heat.',
+      body: 'Minor chips may be repaired and polished; cracks may require replacement of the affected section depending on their extent. Covered where caused by material defects or inadequate installation support under normal use. Not covered where caused by impact, improper use, unsupported loading or direct exposure to excessive heat.',
       bodyZh:
         '轻微崩边可进行修补及抛光；裂缝视程度可能需要更换受影响部分。在正常使用条件下因材料缺陷或安装支撑不足造成的问题属于质保范围；因撞击、使用不当、无支撑受力或直接接触过高温度造成的问题不属于质保范围。',
     },
@@ -318,8 +306,7 @@ export const defaultAgreement = {
       visibility: 'led',
       title: 'LED Strip Lighting Failure or Flickering',
       titleZh: 'LED 灯带失效或闪烁',
-      body:
-        'Remedy may include inspection and repair or replacement of the LED strip, driver, wiring and connectors. Covered for cabinet-integrated LED strips, drivers and associated wiring supplied as part of the joinery package. Not covered where caused by electrical supply issues, electrician-installed wiring faults or Client-supplied components.',
+      body: 'Remedy may include inspection and repair or replacement of the LED strip, driver, wiring and connectors. Covered for cabinet-integrated LED strips, drivers and associated wiring supplied as part of the joinery package. Not covered where caused by electrical supply issues, electrician-installed wiring faults or Client-supplied components.',
       bodyZh:
         '处理方式包括检查并维修或更换 LED 灯带、驱动器、线路及连接件。作为全屋定制套餐一部分供应的集成 LED 灯带、驱动器及相关线路属于质保范围；因供电问题、电工安装线路故障或客户自备部件造成的问题不属于质保范围。',
     },
@@ -327,8 +314,7 @@ export const defaultAgreement = {
       visibility: 'appliance',
       title: 'Misalignment of Integrated Appliance Panels',
       titleZh: '嵌入式电器门板对齐问题',
-      body:
-        'Remedy may include adjusting panel sizes, clearances and fixing methods in accordance with appliance specifications and, where necessary, replacing the affected panel. If the appliance model or dimensions provided by the Client differ from the approved specifications, or third-party appliance installation causes the issue, the rectification will be treated as a variation and additional charges may apply.',
+      body: 'Remedy may include adjusting panel sizes, clearances and fixing methods in accordance with appliance specifications and, where necessary, replacing the affected panel. If the appliance model or dimensions provided by the Client differ from the approved specifications, or third-party appliance installation causes the issue, the rectification will be treated as a variation and additional charges may apply.',
       bodyZh:
         '处理方式包括根据电器规格调整门板尺寸、间隙及固定方式，必要时更换受影响门板。如客户提供的电器型号或尺寸与批准规格不符，或第三方安装电器造成相关问题，整改将作为变更处理，并可能产生额外费用。',
     },
@@ -352,8 +338,7 @@ export const defaultAgreement = {
       '供应及安装方应以专业方式并在合理时间内完成工作；保持施工现场合理的清洁及安全；并对属于质保范围的所供应产品或安装服务缺陷进行整改。',
     execution:
       'Both parties agree to the terms of this Agreement and confirm their acceptance by signing below.',
-    executionZh:
-      '双方同意本协议条款，并通过在下方签字确认接受本协议。',
+    executionZh: '双方同意本协议条款，并通过在下方签字确认接受本协议。',
   },
 
   appendix: {
@@ -368,7 +353,16 @@ export const defaultAgreement = {
       hardwareStatement:
         'Hardware: ______________________________. Hinges: ______________________________. Drawer runners: ______________________________.',
       rows: [
-        { spaceName: '', joineryName: '', length: '', height: '', carcassFinish: '', doorFinish: '', description: '', rate: '' },
+        {
+          spaceName: '',
+          joineryName: '',
+          length: '',
+          height: '',
+          carcassFinish: '',
+          doorFinish: '',
+          description: '',
+          rate: '',
+        },
       ],
     },
     stone: {
@@ -379,7 +373,15 @@ export const defaultAgreement = {
       syncToContractPrice: true,
       noteStatement: 'Note:',
       rows: [
-        { spaceName: '', joineryName: '', length: '', width: '', colourPattern: '', thickness: '', rate: '' },
+        {
+          spaceName: '',
+          joineryName: '',
+          length: '',
+          width: '',
+          colourPattern: '',
+          thickness: '',
+          rate: '',
+        },
       ],
     },
   },

@@ -36,14 +36,7 @@ export default function CustomerLandingPage({ onEnterApp }) {
         {loggedIn ? 'Logout' : 'Login'}
       </button>
 
-      <video
-        className="background-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-      >
+      <video className="background-video" autoPlay muted loop playsInline aria-hidden="true">
         <source src="/video.webm" type="video/webm" />
       </video>
 
@@ -71,22 +64,18 @@ export default function CustomerLandingPage({ onEnterApp }) {
         ) : (
           <>
             <h1 className="brand-name">C2A Cabinetry</h1>
-            <p className="slogan">
-              One stop custom cabinetry solution from China 2 Australia
-            </p>
-            <p className="status-note">
-              Our website is currently under construction.
-            </p>
+            <p className="slogan">One stop custom cabinetry solution from China 2 Australia</p>
+            <p className="status-note">Our website is currently under construction.</p>
 
             <div className="contact-list" aria-label="Contact information">
-          <p>
-            <span className="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.3.56 3.58.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.28.19 2.47.56 3.58a1 1 0 0 1-.25 1.01z" />
-              </svg>
-            </span>
-            <a href="tel:0413685018">0413685018</a>
-          </p>
+              <p>
+                <span className="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.3.56 3.58.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.28.19 2.47.56 3.58a1 1 0 0 1-.25 1.01z" />
+                  </svg>
+                </span>
+                <a href="tel:0413685018">0413685018</a>
+              </p>
               <p>
                 <span className="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">

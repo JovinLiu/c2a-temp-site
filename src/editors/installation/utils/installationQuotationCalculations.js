@@ -28,7 +28,9 @@ export function calculateInstallationQuotation(quotation = {}) {
 
   const totalArea = rows.reduce((sum, row) => sum + row.area, 0);
   const totalFee = rows.reduce((sum, row) => sum + row.amount, 0);
-  const hasDimensions = rows.some((row) => hasEnteredValue(row.length) || hasEnteredValue(row.height));
+  const hasDimensions = rows.some(
+    (row) => hasEnteredValue(row.length) || hasEnteredValue(row.height),
+  );
   const hasCalculationInput = hasEnteredValue(quotation.defaultRate) || hasDimensions;
   const hasCalculatedFee = defaultRate > 0 && rows.some((row) => row.area > 0);
 

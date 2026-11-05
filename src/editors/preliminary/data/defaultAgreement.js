@@ -38,8 +38,7 @@ export const defaultAgreement = {
     estimatedStart: '',
     estimatedDelivery:
       'The Supplier will use reasonable efforts to provide the preliminary design package as soon as reasonably practicable after receiving the Design Fee and all required information from the Client.',
-    estimatedDeliveryZh:
-      '供应方将在收到设计费及客户所需提供的全部资料后，尽快提供初步设计文件。',
+    estimatedDeliveryZh: '供应方将在收到设计费及客户所需提供的全部资料后，尽快提供初步设计文件。',
   },
   services: {
     initialConsultation: true,
@@ -58,10 +57,8 @@ export const defaultAgreement = {
     preliminarySiteMeasure:
       'One preliminary site measurement visit, where reasonably required and accessible',
     preliminaryLayout: 'Preliminary joinery layout and design development',
-    cadDrawings:
-      'CAD drawings showing the proposed general configuration, dimensions and finishes',
-    renderedViews:
-      'Preliminary rendered views or design presentation images, where appropriate',
+    cadDrawings: 'CAD drawings showing the proposed general configuration, dimensions and finishes',
+    renderedViews: 'Preliminary rendered views or design presentation images, where appropriate',
     materialDiscussion: 'Discussion of proposed materials, colours, hardware and finishes',
     preliminaryQuotation:
       'A preliminary project quotation after sufficient design information is available',
@@ -114,8 +111,7 @@ export const defaultAgreement = {
   clausesZh: {
     purpose:
       '客户希望在双方决定是否另行签订定制柜体、石材或相关产品的供货及安装协议前，委托供应方进行初步量尺、设计及报价工作。',
-    scopeIntro:
-      '客户支付设计费后，供应方将为本协议所述项目提供已选择的服务。',
+    scopeIntro: '客户支付设计费后，供应方将为本协议所述项目提供已选择的服务。',
     exclusions:
       '除非双方另行书面明确约定，本服务不包括结构工程、建筑认证、建筑许可、给排水设计、电气设计、供第三方生产使用的施工图、最终施工文件、最终安装复尺、各工种协调、拆除、建筑工程，以及任何产品的供应或安装。',
     feeNonRefundable:

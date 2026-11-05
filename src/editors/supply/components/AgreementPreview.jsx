@@ -12,7 +12,9 @@ function BilingualParagraph({ en, zh, className = '' }) {
   return (
     <div className={`bilingual-paragraph ${className}`.trim()}>
       <p className="bilingual-paragraph__en">{en}</p>
-      <p className="bilingual-paragraph__zh" lang="zh-CN">{zh}</p>
+      <p className="bilingual-paragraph__zh" lang="zh-CN">
+        {zh}
+      </p>
     </div>
   );
 }
@@ -21,7 +23,9 @@ function BilingualListItem({ en, zh }) {
   return (
     <li>
       <div className="bilingual-line__en">{en}</div>
-      <div className="bilingual-line__zh" lang="zh-CN">{zh}</div>
+      <div className="bilingual-line__zh" lang="zh-CN">
+        {zh}
+      </div>
     </li>
   );
 }
@@ -30,7 +34,9 @@ function BilingualCell({ en, zh }) {
   return (
     <>
       <div className="bilingual-line__en">{en}</div>
-      <div className="bilingual-line__zh" lang="zh-CN">{zh}</div>
+      <div className="bilingual-line__zh" lang="zh-CN">
+        {zh}
+      </div>
     </>
   );
 }
@@ -39,8 +45,12 @@ function ContractSection({ number, title, titleZh, children }) {
   return (
     <section className="contract-section">
       <h2>
-        <span>{number}. {title}</span>
-        <span lang="zh-CN">{number}. {titleZh}</span>
+        <span>
+          {number}. {title}
+        </span>
+        <span lang="zh-CN">
+          {number}. {titleZh}
+        </span>
       </h2>
       {children}
     </section>
@@ -88,7 +98,9 @@ export default function AgreementPreview({ data, update }) {
     data.commercial.installationFee,
   ];
   const calculatedTotal = priceInputs.reduce((sum, value) => sum + numericValue(value), 0);
-  const hasAnyPrice = priceInputs.some((value) => value !== '' && value !== null && value !== undefined);
+  const hasAnyPrice = priceInputs.some(
+    (value) => value !== '' && value !== null && value !== undefined,
+  );
   const totalValue = data.commercial.totalOverride || (hasAnyPrice ? calculatedTotal : '');
 
   const paymentMethodsEn = [
@@ -101,23 +113,39 @@ export default function AgreementPreview({ data, update }) {
   ].filter(Boolean);
 
   return (
-    <article className={`document ${showChinese ? 'document--bilingual' : 'document--english-only'}`}>
+    <article
+      className={`document ${showChinese ? 'document--bilingual' : 'document--english-only'}`}
+    >
       <header className="document-header document-header--with-logo">
         <div className="document-header__logo-row">
-          <img className="document-header__logo" src={c2aLogo.src || c2aLogo} alt="C2A Cabinetry logo" />
+          <img
+            className="document-header__logo"
+            src={c2aLogo.src || c2aLogo}
+            alt="C2A Cabinetry logo"
+          />
         </div>
         <div className="document-header__titles">
           <h1>{data.meta.title}</h1>
-          <div className="document-title-zh" lang="zh-CN">{data.meta.titleZh}</div>
+          <div className="document-title-zh" lang="zh-CN">
+            {data.meta.titleZh}
+          </div>
         </div>
         <div className="document-header__meta">
           <div>
-            <span>Agreement date: <Value>{formatDate(data.meta.agreementDate)}</Value></span>
-            <span lang="zh-CN">协议日期：<Value>{formatDate(data.meta.agreementDate)}</Value></span>
+            <span>
+              Agreement date: <Value>{formatDate(data.meta.agreementDate)}</Value>
+            </span>
+            <span lang="zh-CN">
+              协议日期：<Value>{formatDate(data.meta.agreementDate)}</Value>
+            </span>
           </div>
           <div>
-            <span>Reference: <Value>{data.meta.reference}</Value></span>
-            <span lang="zh-CN">协议编号：<Value>{data.meta.reference}</Value></span>
+            <span>
+              Reference: <Value>{data.meta.reference}</Value>
+            </span>
+            <span lang="zh-CN">
+              协议编号：<Value>{data.meta.reference}</Value>
+            </span>
           </div>
         </div>
       </header>
@@ -129,42 +157,69 @@ export default function AgreementPreview({ data, update }) {
 
       <div className="party-grid">
         <section className="party-card">
-          <h3><span>Supplier and Installer</span><span lang="zh-CN">供应及安装方</span></h3>
+          <h3>
+            <span>Supplier and Installer</span>
+            <span lang="zh-CN">供应及安装方</span>
+          </h3>
           <p>
             <strong>{data.supplier.name}</strong>
-            <br />ABN: {data.supplier.abn}
-            <br />Address: {data.supplier.address}
-            <br />Phone: {data.supplier.phone}
-            <br />Email: {data.supplier.email}
+            <br />
+            ABN: {data.supplier.abn}
+            <br />
+            Address: {data.supplier.address}
+            <br />
+            Phone: {data.supplier.phone}
+            <br />
+            Email: {data.supplier.email}
           </p>
           <p className="party-card__zh" lang="zh-CN">
             澳大利亚商业号码：{data.supplier.abn}
-            <br />地址：{data.supplier.address}
-            <br />电话：{data.supplier.phone}
-            <br />电子邮箱：{data.supplier.email}
+            <br />
+            地址：{data.supplier.address}
+            <br />
+            电话：{data.supplier.phone}
+            <br />
+            电子邮箱：{data.supplier.email}
           </p>
         </section>
 
         <section className="party-card">
-          <h3><span>Client</span><span lang="zh-CN">客户</span></h3>
+          <h3>
+            <span>Client</span>
+            <span lang="zh-CN">客户</span>
+          </h3>
           <p>
-            <strong><Value>{data.client.name}</Value></strong>
-            <br />Address: <Value>{data.client.address}</Value>
-            <br />Phone: <Value>{data.client.phone}</Value>
-            <br />Email: <Value>{data.client.email}</Value>
+            <strong>
+              <Value>{data.client.name}</Value>
+            </strong>
+            <br />
+            Address: <Value>{data.client.address}</Value>
+            <br />
+            Phone: <Value>{data.client.phone}</Value>
+            <br />
+            Email: <Value>{data.client.email}</Value>
           </p>
           <p className="party-card__zh" lang="zh-CN">
             姓名：<Value>{data.client.name}</Value>
-            <br />地址：<Value>{data.client.address}</Value>
-            <br />电话：<Value>{data.client.phone}</Value>
-            <br />电子邮箱：<Value>{data.client.email}</Value>
+            <br />
+            地址：<Value>{data.client.address}</Value>
+            <br />
+            电话：<Value>{data.client.phone}</Value>
+            <br />
+            电子邮箱：<Value>{data.client.email}</Value>
           </p>
         </section>
       </div>
 
       <div className="project-address">
-        <div><strong>Project address for supply and installation:</strong> <Value>{data.client.projectAddress}</Value></div>
-        <div lang="zh-CN"><strong>供货及安装项目地址：</strong><Value>{data.client.projectAddress}</Value></div>
+        <div>
+          <strong>Project address for supply and installation:</strong>{' '}
+          <Value>{data.client.projectAddress}</Value>
+        </div>
+        <div lang="zh-CN">
+          <strong>供货及安装项目地址：</strong>
+          <Value>{data.client.projectAddress}</Value>
+        </div>
       </div>
 
       <BilingualParagraph
@@ -183,72 +238,181 @@ export default function AgreementPreview({ data, update }) {
           ))}
         </ul>
         <BilingualParagraph
-          en={<><strong>Excluded works:</strong> {data.scope.exclusions}</>}
-          zh={<><strong>不包含的工作：</strong>{data.scope.exclusionsZh}</>}
+          en={
+            <>
+              <strong>Excluded works:</strong> {data.scope.exclusions}
+            </>
+          }
+          zh={
+            <>
+              <strong>不包含的工作：</strong>
+              {data.scope.exclusionsZh}
+            </>
+          }
         />
       </ContractSection>
 
       <ContractSection number="2" title="Schedule" titleZh="时间安排">
         <ul>
           <BilingualListItem
-            en={<>Estimated production commencement date: <Value>{formatDate(data.schedule.estimatedCommencement)}</Value>.</>}
-            zh={<>预计生产开始日期：<Value>{formatDate(data.schedule.estimatedCommencement)}</Value>。</>}
+            en={
+              <>
+                Estimated production commencement date:{' '}
+                <Value>{formatDate(data.schedule.estimatedCommencement)}</Value>.
+              </>
+            }
+            zh={
+              <>
+                预计生产开始日期：<Value>{formatDate(data.schedule.estimatedCommencement)}</Value>。
+              </>
+            }
           />
           <BilingualListItem
-            en={<>Estimated production period: <Value>{data.schedule.productionPeriod}</Value>.</>}
-            zh={<>预计生产周期：<Value>{data.schedule.productionPeriodZh}</Value>。</>}
+            en={
+              <>
+                Estimated production period: <Value>{data.schedule.productionPeriod}</Value>.
+              </>
+            }
+            zh={
+              <>
+                预计生产周期：<Value>{data.schedule.productionPeriodZh}</Value>。
+              </>
+            }
           />
           <BilingualListItem
-            en={<>Estimated sea freight period: <Value>{data.schedule.seaFreightPeriod}</Value>.</>}
-            zh={<>预计海运时间：<Value>{data.schedule.seaFreightPeriodZh}</Value>。</>}
+            en={
+              <>
+                Estimated sea freight period: <Value>{data.schedule.seaFreightPeriod}</Value>.
+              </>
+            }
+            zh={
+              <>
+                预计海运时间：<Value>{data.schedule.seaFreightPeriodZh}</Value>。
+              </>
+            }
           />
           <BilingualListItem
-            en={<>Estimated installation date: <Value>{formatDate(data.schedule.estimatedInstallation)}</Value>.</>}
-            zh={<>预计安装日期：<Value>{formatDate(data.schedule.estimatedInstallation)}</Value>。</>}
+            en={
+              <>
+                Estimated installation date:{' '}
+                <Value>{formatDate(data.schedule.estimatedInstallation)}</Value>.
+              </>
+            }
+            zh={
+              <>
+                预计安装日期：<Value>{formatDate(data.schedule.estimatedInstallation)}</Value>。
+              </>
+            }
           />
         </ul>
         <BilingualParagraph en={data.schedule.shippingDelay} zh={data.schedule.shippingDelayZh} />
         <BilingualParagraph en={data.schedule.forceMajeure} zh={data.schedule.forceMajeureZh} />
       </ContractSection>
 
-      <ContractSection number="3" title="Contract Price and Payment Terms" titleZh="合同价格及付款条款">
+      <ContractSection
+        number="3"
+        title="Contract Price and Payment Terms"
+        titleZh="合同价格及付款条款"
+      >
         <table className="summary-table price-table">
           <thead>
             <tr>
-              <th><BilingualCell en="Price item" zh="价格项目" /></th>
-              <th><BilingualCell en="Amount" zh="金额" /></th>
+              <th>
+                <BilingualCell en="Price item" zh="价格项目" />
+              </th>
+              <th>
+                <BilingualCell en="Amount" zh="金额" />
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><BilingualCell en="Joinery Product Price" zh="全屋定制产品价格" /></td>
-              <td><BilingualCell en={`${formatCurrency(joineryPrice)} ${data.commercial.gstWording}`} zh={`${formatCurrency(joineryPrice)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+              <td>
+                <BilingualCell en="Joinery Product Price" zh="全屋定制产品价格" />
+              </td>
+              <td>
+                <BilingualCell
+                  en={`${formatCurrency(joineryPrice)} ${data.commercial.gstWording}`}
+                  zh={`${formatCurrency(joineryPrice)}，${gstChinese(data.commercial.gstWording)}`}
+                />
+              </td>
             </tr>
             {data.commercial.includeStone && (
               <tr>
-                <td><BilingualCell en="Stone Product Price" zh="石材产品价格" /></td>
-                <td><BilingualCell en={`${formatCurrency(stonePrice)} ${data.commercial.gstWording}`} zh={`${formatCurrency(stonePrice)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+                <td>
+                  <BilingualCell en="Stone Product Price" zh="石材产品价格" />
+                </td>
+                <td>
+                  <BilingualCell
+                    en={`${formatCurrency(stonePrice)} ${data.commercial.gstWording}`}
+                    zh={`${formatCurrency(stonePrice)}，${gstChinese(data.commercial.gstWording)}`}
+                  />
+                </td>
               </tr>
             )}
             <tr>
-              <td><BilingualCell en="Estimated Sea and Land Transport Cost from Factory to Site" zh="从工厂到现场预计海运及陆运费用" /></td>
-              <td><BilingualCell en={`${formatCurrency(data.commercial.freightCost)} ${data.commercial.gstWording}`} zh={`${formatCurrency(data.commercial.freightCost)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+              <td>
+                <BilingualCell
+                  en="Estimated Sea and Land Transport Cost from Factory to Site"
+                  zh="从工厂到现场预计海运及陆运费用"
+                />
+              </td>
+              <td>
+                <BilingualCell
+                  en={`${formatCurrency(data.commercial.freightCost)} ${data.commercial.gstWording}`}
+                  zh={`${formatCurrency(data.commercial.freightCost)}，${gstChinese(data.commercial.gstWording)}`}
+                />
+              </td>
             </tr>
             <tr>
-              <td><BilingualCell en="Handling Fee" zh="搬运费用" /></td>
-              <td><BilingualCell en={`${formatCurrency(data.commercial.handlingFee)} ${data.commercial.gstWording}`} zh={`${formatCurrency(data.commercial.handlingFee)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+              <td>
+                <BilingualCell en="Handling Fee" zh="搬运费用" />
+              </td>
+              <td>
+                <BilingualCell
+                  en={`${formatCurrency(data.commercial.handlingFee)} ${data.commercial.gstWording}`}
+                  zh={`${formatCurrency(data.commercial.handlingFee)}，${gstChinese(data.commercial.gstWording)}`}
+                />
+              </td>
             </tr>
             <tr>
-              <td><BilingualCell en="Packaging, Pallets and Waste Disposal Fee" zh="包装、托盘及垃圾处理费用" /></td>
-              <td><BilingualCell en={`${formatCurrency(data.commercial.wasteDisposalFee)} ${data.commercial.gstWording}`} zh={`${formatCurrency(data.commercial.wasteDisposalFee)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+              <td>
+                <BilingualCell
+                  en="Packaging, Pallets and Waste Disposal Fee"
+                  zh="包装、托盘及垃圾处理费用"
+                />
+              </td>
+              <td>
+                <BilingualCell
+                  en={`${formatCurrency(data.commercial.wasteDisposalFee)} ${data.commercial.gstWording}`}
+                  zh={`${formatCurrency(data.commercial.wasteDisposalFee)}，${gstChinese(data.commercial.gstWording)}`}
+                />
+              </td>
             </tr>
             <tr>
-              <td><BilingualCell en="Joinery and Stone Installation Fee" zh="全屋定制及石材安装费用" /></td>
-              <td><BilingualCell en={`${formatCurrency(data.commercial.installationFee)} ${data.commercial.gstWording}`} zh={`${formatCurrency(data.commercial.installationFee)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+              <td>
+                <BilingualCell
+                  en="Joinery and Stone Installation Fee"
+                  zh="全屋定制及石材安装费用"
+                />
+              </td>
+              <td>
+                <BilingualCell
+                  en={`${formatCurrency(data.commercial.installationFee)} ${data.commercial.gstWording}`}
+                  zh={`${formatCurrency(data.commercial.installationFee)}，${gstChinese(data.commercial.gstWording)}`}
+                />
+              </td>
             </tr>
             <tr className="total-row">
-              <td><BilingualCell en="Total Contract Price" zh="合同总价" /></td>
-              <td><BilingualCell en={`${formatCurrency(totalValue)} ${data.commercial.gstWording}`} zh={`${formatCurrency(totalValue)}，${gstChinese(data.commercial.gstWording)}`} /></td>
+              <td>
+                <BilingualCell en="Total Contract Price" zh="合同总价" />
+              </td>
+              <td>
+                <BilingualCell
+                  en={`${formatCurrency(totalValue)} ${data.commercial.gstWording}`}
+                  zh={`${formatCurrency(totalValue)}，${gstChinese(data.commercial.gstWording)}`}
+                />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -259,13 +423,31 @@ export default function AgreementPreview({ data, update }) {
           {data.paymentStages.map((stage, index) => (
             <div className="payment-stage" key={`${stage.title}-${index}`}>
               <h3>
-                <span>{index + 1}. {stage.title}</span>
-                <span lang="zh-CN">{index + 1}. {stage.titleZh}</span>
+                <span>
+                  {index + 1}. {stage.title}
+                </span>
+                <span lang="zh-CN">
+                  {index + 1}. {stage.titleZh}
+                </span>
               </h3>
               <div className="payment-stage__amount">
                 <BilingualCell
-                  en={<><strong>Amount:</strong> {formatCurrency(calculated.automaticPaymentAmounts[index] ?? stage.amount)} {data.commercial.gstWording}{stage.calculation ? ` (${stage.calculation})` : ''}</>}
-                  zh={<><strong>金额：</strong>{formatCurrency(calculated.automaticPaymentAmounts[index] ?? stage.amount)}，{gstChinese(data.commercial.gstWording)}{stage.calculationZh ? `（${stage.calculationZh}）` : ''}</>}
+                  en={
+                    <>
+                      <strong>Amount:</strong>{' '}
+                      {formatCurrency(calculated.automaticPaymentAmounts[index] ?? stage.amount)}{' '}
+                      {data.commercial.gstWording}
+                      {stage.calculation ? ` (${stage.calculation})` : ''}
+                    </>
+                  }
+                  zh={
+                    <>
+                      <strong>金额：</strong>
+                      {formatCurrency(calculated.automaticPaymentAmounts[index] ?? stage.amount)}，
+                      {gstChinese(data.commercial.gstWording)}
+                      {stage.calculationZh ? `（${stage.calculationZh}）` : ''}
+                    </>
+                  }
                 />
               </div>
               <BilingualParagraph en={stage.timing} zh={stage.timingZh} />
@@ -273,22 +455,49 @@ export default function AgreementPreview({ data, update }) {
           ))}
         </div>
 
-        <BilingualParagraph en={data.payments.customMadeNonRefundable} zh={data.payments.customMadeNonRefundableZh} />
         <BilingualParagraph
-          en={<><strong>Retention for incomplete finalisation:</strong> The Client may retain {data.payments.retentionFrom}% to {data.payments.retentionTo}% of the installation fee in the circumstances described below. {data.payments.retention}</>}
-          zh={<><strong>未完成收尾工作的保留款：</strong>在下述情况下，客户可保留安装费的 {data.payments.retentionFrom}% 至 {data.payments.retentionTo}%。{data.payments.retentionZh}</>}
+          en={data.payments.customMadeNonRefundable}
+          zh={data.payments.customMadeNonRefundableZh}
+        />
+        <BilingualParagraph
+          en={
+            <>
+              <strong>Retention for incomplete finalisation:</strong> The Client may retain{' '}
+              {data.payments.retentionFrom}% to {data.payments.retentionTo}% of the installation fee
+              in the circumstances described below. {data.payments.retention}
+            </>
+          }
+          zh={
+            <>
+              <strong>未完成收尾工作的保留款：</strong>在下述情况下，客户可保留安装费的{' '}
+              {data.payments.retentionFrom}% 至 {data.payments.retentionTo}%。
+              {data.payments.retentionZh}
+            </>
+          }
         />
 
         <BilingualParagraph
-          en={<><strong>Accepted payment methods:</strong> {paymentMethodsEn.length ? paymentMethodsEn.join('; ') : '________________'}.</>}
-          zh={<><strong>接受的付款方式：</strong>{paymentMethodsZh.length ? paymentMethodsZh.join('；') : '________________'}。</>}
+          en={
+            <>
+              <strong>Accepted payment methods:</strong>{' '}
+              {paymentMethodsEn.length ? paymentMethodsEn.join('; ') : '________________'}.
+            </>
+          }
+          zh={
+            <>
+              <strong>接受的付款方式：</strong>
+              {paymentMethodsZh.length ? paymentMethodsZh.join('；') : '________________'}。
+            </>
+          }
         />
 
         {data.payments.bankTransfer && (
           <table className="summary-table bank-table">
             <tbody>
               <tr>
-                <th><BilingualCell en="Account Name" zh="账户名称" /></th>
+                <th>
+                  <BilingualCell en="Account Name" zh="账户名称" />
+                </th>
                 <td>{data.bank.accountName}</td>
               </tr>
               <tr>
@@ -296,7 +505,9 @@ export default function AgreementPreview({ data, update }) {
                 <td>{data.bank.bsb}</td>
               </tr>
               <tr>
-                <th><BilingualCell en="Account Number" zh="账号" /></th>
+                <th>
+                  <BilingualCell en="Account Number" zh="账号" />
+                </th>
                 <td>{data.bank.accountNumber}</td>
               </tr>
             </tbody>
@@ -313,14 +524,21 @@ export default function AgreementPreview({ data, update }) {
           en={`${data.warranty.intro} The warranty period is ${data.warranty.years} years.`}
           zh={`${data.warranty.introZh} 质保期为 ${data.warranty.years} 年。`}
         />
-        <BilingualParagraph en={data.warranty.explanatoryNote} zh={data.warranty.explanatoryNoteZh} />
+        <BilingualParagraph
+          en={data.warranty.explanatoryNote}
+          zh={data.warranty.explanatoryNoteZh}
+        />
 
         <div className="warranty-list">
           {visibleWarrantyItems.map((item, index) => (
             <div className="warranty-item" key={`${item.title}-${index}`}>
               <h3>
-                <span>{index + 1}. {item.title}</span>
-                <span lang="zh-CN">{index + 1}. {item.titleZh}</span>
+                <span>
+                  {index + 1}. {item.title}
+                </span>
+                <span lang="zh-CN">
+                  {index + 1}. {item.titleZh}
+                </span>
               </h3>
               <BilingualParagraph en={item.body} zh={item.bodyZh} />
             </div>
@@ -328,12 +546,30 @@ export default function AgreementPreview({ data, update }) {
         </div>
 
         <BilingualParagraph
-          en={<><strong>Warranty exclusions:</strong> {data.warranty.exclusions}</>}
-          zh={<><strong>质保除外责任：</strong>{data.warranty.exclusionsZh}</>}
+          en={
+            <>
+              <strong>Warranty exclusions:</strong> {data.warranty.exclusions}
+            </>
+          }
+          zh={
+            <>
+              <strong>质保除外责任：</strong>
+              {data.warranty.exclusionsZh}
+            </>
+          }
         />
         <BilingualParagraph
-          en={<><strong>Call-out fee principles:</strong> {data.warranty.callout}</>}
-          zh={<><strong>上门费原则：</strong>{data.warranty.calloutZh}</>}
+          en={
+            <>
+              <strong>Call-out fee principles:</strong> {data.warranty.callout}
+            </>
+          }
+          zh={
+            <>
+              <strong>上门费原则：</strong>
+              {data.warranty.calloutZh}
+            </>
+          }
         />
       </ContractSection>
 
@@ -342,14 +578,28 @@ export default function AgreementPreview({ data, update }) {
       </ContractSection>
 
       <ContractSection number="7" title="Client Responsibilities" titleZh="客户责任">
-        <BilingualParagraph en={data.clauses.clientResponsibilities} zh={data.clauses.clientResponsibilitiesZh} />
+        <BilingualParagraph
+          en={data.clauses.clientResponsibilities}
+          zh={data.clauses.clientResponsibilitiesZh}
+        />
       </ContractSection>
 
-      <ContractSection number="8" title="Supplier and Installer Responsibilities" titleZh="供应及安装方责任">
-        <BilingualParagraph en={data.clauses.supplierResponsibilities} zh={data.clauses.supplierResponsibilitiesZh} />
+      <ContractSection
+        number="8"
+        title="Supplier and Installer Responsibilities"
+        titleZh="供应及安装方责任"
+      >
+        <BilingualParagraph
+          en={data.clauses.supplierResponsibilities}
+          zh={data.clauses.supplierResponsibilitiesZh}
+        />
       </ContractSection>
 
-      <ContractSection number="9" title="Contract Documents and Attachments" titleZh="合同文件及附件">
+      <ContractSection
+        number="9"
+        title="Contract Documents and Attachments"
+        titleZh="合同文件及附件"
+      >
         <div className="attachments-block">
           <div>{data.attachments.en}</div>
           <div lang="zh-CN">{data.attachments.zh}</div>
@@ -361,21 +611,35 @@ export default function AgreementPreview({ data, update }) {
         <table className="signature-table">
           <thead>
             <tr>
-              <th><BilingualCell en="Supplier and Installer" zh="供应及安装方" /></th>
-              <th><BilingualCell en="Client" zh="客户" /></th>
+              <th>
+                <BilingualCell en="Supplier and Installer" zh="供应及安装方" />
+              </th>
+              <th>
+                <BilingualCell en="Client" zh="客户" />
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                {showChinese ? 'Name / 姓名' : 'Name'}: {data.signatures.supplierName || '____________________________'}
-                <br /><br />{showChinese ? 'Signature / 签名' : 'Signature'}: __________________________
-                <br /><br />{showChinese ? 'Date / 日期' : 'Date'}: ______________________________
+                {showChinese ? 'Name / 姓名' : 'Name'}:{' '}
+                {data.signatures.supplierName || '____________________________'}
+                <br />
+                <br />
+                {showChinese ? 'Signature / 签名' : 'Signature'}: __________________________
+                <br />
+                <br />
+                {showChinese ? 'Date / 日期' : 'Date'}: ______________________________
               </td>
               <td>
-                {showChinese ? 'Name / 姓名' : 'Name'}: {data.signatures.clientName || data.client.name || '____________________________'}
-                <br /><br />{showChinese ? 'Signature / 签名' : 'Signature'}: __________________________
-                <br /><br />{showChinese ? 'Date / 日期' : 'Date'}: ______________________________
+                {showChinese ? 'Name / 姓名' : 'Name'}:{' '}
+                {data.signatures.clientName || data.client.name || '____________________________'}
+                <br />
+                <br />
+                {showChinese ? 'Signature / 签名' : 'Signature'}: __________________________
+                <br />
+                <br />
+                {showChinese ? 'Date / 日期' : 'Date'}: ______________________________
               </td>
             </tr>
           </tbody>

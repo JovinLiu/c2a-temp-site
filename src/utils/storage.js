@@ -6,10 +6,7 @@ export function mergeAgreement(defaultValue, savedValue) {
   if (defaultValue && typeof defaultValue === 'object') {
     const source = savedValue && typeof savedValue === 'object' ? savedValue : {};
     return Object.fromEntries(
-      Object.entries(defaultValue).map(([key, value]) => [
-        key,
-        mergeAgreement(value, source[key]),
-      ]),
+      Object.entries(defaultValue).map(([key, value]) => [key, mergeAgreement(value, source[key])]),
     );
   }
 

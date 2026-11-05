@@ -9,8 +9,7 @@ export const defaultAgreement = {
     reference: '',
     statusNote:
       'Complete the Client, project, contract sum, commencement date and payment details before signing.',
-    statusNoteZh:
-      '签署前请填写客户、项目、合同金额、开工日期及付款信息。',
+    statusNoteZh: '签署前请填写客户、项目、合同金额、开工日期及付款信息。',
   },
   contractor: {
     name: 'C2A Joinery Pty Ltd',

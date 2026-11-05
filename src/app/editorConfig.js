@@ -1,3 +1,4 @@
+import { migrateSupplyAgreement, migrateInstallationAgreement } from './migrations.js';
 import SupplyAgreementPreview from '../editors/supply/components/AgreementPreview.jsx';
 import SupplySidebar from '../editors/supply/components/Sidebar.jsx';
 import { defaultAgreement as defaultSupplyAgreement } from '../editors/supply/data/defaultAgreement.js';
@@ -18,6 +19,7 @@ import {
 
 export const editorConfigs = {
   supply: {
+    migrate: migrateSupplyAgreement,
     storageKey: SUPPLY_STORAGE_KEY,
     defaultData: defaultSupplyAgreement,
     filePrefix: 'C2A-Supply-Installation-Agreement',
@@ -27,6 +29,7 @@ export const editorConfigs = {
     Preview: SupplyAgreementPreview,
   },
   preliminary: {
+    migrate: (data) => data,
     storageKey: PRELIMINARY_STORAGE_KEY,
     defaultData: defaultPreliminaryAgreement,
     filePrefix: 'C2A-Preliminary-Design-Agreement',
@@ -36,6 +39,7 @@ export const editorConfigs = {
     Preview: PreliminaryAgreementPreview,
   },
   installation: {
+    migrate: migrateInstallationAgreement,
     storageKey: INSTALLATION_STORAGE_KEY,
     defaultData: defaultInstallationAgreement,
     filePrefix: 'C2A-Joinery-Installation-Agreement',
