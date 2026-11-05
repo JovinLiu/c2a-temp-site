@@ -1,3 +1,4 @@
+import useQuotationRowOrder from './useQuotationRowOrder.js';
 import {
   BilingualHeader,
   EditableTextCell,
@@ -9,6 +10,9 @@ import QuotationHeader from './QuotationHeader.jsx';
 import { emptyStoneRow } from '../../data/quotationRows.js';
 
 export default function StoneQuotation({ data, update, totals }) {
+  const rowOrder = useQuotationRowOrder(data.appendix.stone.rows, (rows) =>
+    update('appendix.stone.rows', rows),
+  );
   const removeStoneRow = (index) => {
     if (data.appendix.stone.rows.length <= 1) return;
     update(
@@ -65,12 +69,22 @@ export default function StoneQuotation({ data, update, totals }) {
               <th className="no-print quotation-rate-column">
                 <BilingualHeader en="Rate (AUD/m²)" zh="单价（澳元/平方米）" />
               </th>
+              <th className="no-print quotation-delete-column" aria-label="Row actions / 行操作" />
             </tr>
           </thead>
           <tbody>
             {totals.rows.map((row, index) => (
-              <tr key={`stone-quotation-${index}`}>
-                <td>
+              <tr key={`stone-quotation-${index}`} {...rowOrder.rowProps(index)}>
+                <td className="quotation-reorder-cell">
+                  <button
+                    type="button"
+                    className="quotation-drag-handle no-print"
+                    aria-label={`Move stone row ${index + 1} / 移动本行`}
+                    title="Drag to reorder / 拖动排序；↑↓ 调整位置"
+                    {...rowOrder.handleProps(index)}
+                  >
+                    <span aria-hidden="true">☰</span>
+                  </button>
                   <EditableTextCell
                     value={row.spaceName}
                     ariaLabel={`Stone row ${index + 1} space name`}
@@ -107,22 +121,12 @@ export default function StoneQuotation({ data, update, totals }) {
                     }
                   />
                 </td>
-                <td className="quotation-number quotation-row-action-cell">
+                <td className="quotation-number">
                   <EditableNumber
                     value={row.thickness}
                     ariaLabel={`Stone row ${index + 1} thickness`}
                     onChange={(value) => update(`appendix.stone.rows.${index}.thickness`, value)}
                   />
-                  <button
-                    className="quotation-remove-row no-print"
-                    type="button"
-                    title="Remove row / 删除本行"
-                    aria-label={`Remove stone row ${index + 1}`}
-                    disabled={data.appendix.stone.rows.length <= 1}
-                    onClick={() => removeStoneRow(index)}
-                  >
-                    ×
-                  </button>
                 </td>
                 <td className="quotation-number quotation-amount-column">
                   <RowAmountEditor
@@ -146,6 +150,18 @@ export default function StoneQuotation({ data, update, totals }) {
                     }
                   />
                 </td>
+                <td className="no-print quotation-delete-column">
+                  <button
+                    className="quotation-remove-row no-print"
+                    type="button"
+                    title="Remove row / 删除本行"
+                    aria-label={`Remove stone row ${index + 1}`}
+                    disabled={data.appendix.stone.rows.length <= 1}
+                    onClick={() => removeStoneRow(index)}
+                  >
+                    ×
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -163,6 +179,7 @@ export default function StoneQuotation({ data, update, totals }) {
                 />
               </td>
               <td className="no-print quotation-rate-column" />
+              <td className="no-print quotation-delete-column" />
             </tr>
           </tfoot>
         </table>

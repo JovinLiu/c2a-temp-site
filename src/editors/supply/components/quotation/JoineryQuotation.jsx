@@ -1,3 +1,4 @@
+import useQuotationRowOrder from './useQuotationRowOrder.js';
 import {
   BilingualHeader,
   EditableTextCell,
@@ -10,6 +11,9 @@ import QuotationHeader from './QuotationHeader.jsx';
 import { emptyJoineryRow } from '../../data/quotationRows.js';
 
 export default function JoineryQuotation({ data, update, totals }) {
+  const rowOrder = useQuotationRowOrder(data.appendix.joinery.rows, (rows) =>
+    update('appendix.joinery.rows', rows),
+  );
   const removeJoineryRow = (index) => {
     if (data.appendix.joinery.rows.length <= 1) return;
     update(
@@ -74,12 +78,22 @@ export default function JoineryQuotation({ data, update, totals }) {
               <th className="no-print quotation-rate-column">
                 <BilingualHeader en="Rate (AUD/m²)" zh="单价（澳元/平方米）" />
               </th>
+              <th className="no-print quotation-delete-column" aria-label="Row actions / 行操作" />
             </tr>
           </thead>
           <tbody>
             {totals.rows.map((row, index) => (
-              <tr key={`joinery-quotation-${index}`}>
-                <td>
+              <tr key={`joinery-quotation-${index}`} {...rowOrder.rowProps(index)}>
+                <td className="quotation-reorder-cell">
+                  <button
+                    type="button"
+                    className="quotation-drag-handle no-print"
+                    aria-label={`Move joinery row ${index + 1} / 移动本行`}
+                    title="Drag to reorder / 拖动排序；↑↓ 调整位置"
+                    {...rowOrder.handleProps(index)}
+                  >
+                    <span aria-hidden="true">☰</span>
+                  </button>
                   <EditableTextCell
                     value={row.spaceName}
                     ariaLabel={`Joinery row ${index + 1} space name`}
@@ -134,7 +148,7 @@ export default function JoineryQuotation({ data, update, totals }) {
                     onChange={(value) => update(`appendix.joinery.rows.${index}.doorFinish`, value)}
                   />
                 </td>
-                <td className="quotation-row-action-cell">
+                <td>
                   <EditableTextCell
                     value={row.description}
                     ariaLabel={`Joinery row ${index + 1} description`}
@@ -142,16 +156,6 @@ export default function JoineryQuotation({ data, update, totals }) {
                       update(`appendix.joinery.rows.${index}.description`, value)
                     }
                   />
-                  <button
-                    className="quotation-remove-row no-print"
-                    type="button"
-                    title="Remove row / 删除本行"
-                    aria-label={`Remove joinery row ${index + 1}`}
-                    disabled={data.appendix.joinery.rows.length <= 1}
-                    onClick={() => removeJoineryRow(index)}
-                  >
-                    ×
-                  </button>
                 </td>
                 <td className="quotation-number quotation-amount-column">
                   <RowAmountEditor
@@ -174,6 +178,18 @@ export default function JoineryQuotation({ data, update, totals }) {
                       update(`appendix.joinery.rows.${index}.rate`, event.target.value)
                     }
                   />
+                </td>
+                <td className="no-print quotation-delete-column">
+                  <button
+                    className="quotation-remove-row no-print"
+                    type="button"
+                    title="Remove row / 删除本行"
+                    aria-label={`Remove joinery row ${index + 1}`}
+                    disabled={data.appendix.joinery.rows.length <= 1}
+                    onClick={() => removeJoineryRow(index)}
+                  >
+                    ×
+                  </button>
                 </td>
               </tr>
             ))}
@@ -198,6 +214,7 @@ export default function JoineryQuotation({ data, update, totals }) {
                 />
               </td>
               <td className="no-print quotation-rate-column" />
+              <td className="no-print quotation-delete-column" />
             </tr>
           </tfoot>
         </table>

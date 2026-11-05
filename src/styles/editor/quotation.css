@@ -568,3 +568,60 @@
 .quotation-table--stone td:nth-child(6) {
   width: 16.6667%;
 }
+
+@media screen {
+  .quotation-table td.quotation-reorder-cell {
+    position: relative;
+    padding-left: 25px;
+  }
+  .quotation-drag-handle {
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 21px;
+    padding: 4px 0;
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+    color: #64748b;
+    cursor: grab;
+    opacity: 0;
+  }
+  .quotation-table tbody tr:hover .quotation-drag-handle,
+  .quotation-drag-handle:focus-visible {
+    opacity: 1;
+  }
+  .quotation-drag-handle:hover,
+  .quotation-drag-handle:focus-visible {
+    background: #e2e8f0;
+  }
+  .quotation-drag-handle:active {
+    cursor: grabbing;
+  }
+  .quotation-table tbody tr.quotation-drop-target td {
+    box-shadow:
+      inset 0 2px #2563eb,
+      inset 0 -2px #2563eb;
+    background: #eff6ff;
+  }
+}
+@media (hover: none) {
+  .quotation-drag-handle {
+    opacity: 1;
+  }
+}
+
+@media screen {
+  .quotation-table th.quotation-delete-column,
+  .quotation-table td.quotation-delete-column {
+    width: 32px;
+    min-width: 32px;
+    padding: 4px;
+    text-align: center;
+  }
+  .quotation-delete-column .quotation-remove-row {
+    position: static;
+    vertical-align: middle;
+  }
+}
